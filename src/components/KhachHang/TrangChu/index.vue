@@ -244,7 +244,7 @@
                         <template v-for="(v, k) in monAnData" :key="k">
                             <div class="col-lg-2 d-flex">
                                 <div class="card flex-fill">
-                                    <router-link :to="'/khach-hang/don-dat-hang/' + v.id_quan_an">
+                                    <router-link :to="'/khach-hang/quan-an/' + v.id_quan_an">
                                         <img :src="v.hinh_anh" class="card-img-top"
                                             style="height: 200px; width: 100%;" />
                                         <div class="card-body">

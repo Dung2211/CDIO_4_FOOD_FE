@@ -28,7 +28,7 @@
 						class="user-img" alt="user avatar">
 					<div class="user-info ps-3">
 						<p class="user-name mb-0">{{ ho_ten }}</p>
-						<p class="designattion mb-0">Khách Hàng</p>
+						<p class="designattion mb-0">Khách hàng</p>
 					</div>
 				</a>
 				<ul class="dropdown-menu dropdown-menu-end">
