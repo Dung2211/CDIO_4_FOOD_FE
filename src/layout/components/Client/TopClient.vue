@@ -1,54 +1,61 @@
 <template>
-	<div class="topbar d-flex align-items-center">
-		<nav class="navbar navbar-expand">
-			<div class="topbar-logo-header">
-				<div class="">
-					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8Qs5Fh70n2MpVMZYjJy5R3DuZusdWCzAckA&s"
-						class="logo-icon" alt="logo icon">
+	<div class="topbar bg-white py-2 shadow-sm border-bottom">
+		<div class="container-fluid px-5">
+			<div class="d-flex justify-content-between align-items-center flex-wrap">
+				<!-- Logo -->
+				<div class="d-flex align-items-center gap-2 mb-2 mb-md-0 ms-5">
+					<i class="fa-solid fa-truck-fast fa-2x text-dark"></i>
+					<h4 class="mb-0 fw-bold text-dark">K-FOODS</h4>
 				</div>
-				<div class="">
-					<h4 class="logo-text text-danger">FoodZone</h4>
+				<!-- Menu giữa -->
+				<div class="d-flex align-items-center gap-4 flex-wrap text-center mb-2 mb-md-0 fs-6">
+					<router-link to="/khach-hang/trang-chu" class="menu-link"><b>Trang chủ</b></router-link>
+					<router-link to="/khach-hang/mon-an" class="menu-link"><b>Món ăn</b></router-link>
+					<router-link to="/khach-hang/list-quan-an" class="menu-link"><b>Quán ăn</b></router-link>
+					<router-link to="/khach-hang/don-hang" class="menu-link"><b>Đơn hàng</b></router-link>
 				</div>
-			</div>
-			<div class="mobile-toggle-menu"><i class='bx bx-menu'></i></div>
-			<div class="search-bar flex-grow-1">
-				<div class="position-relative search-bar-box">
-					<input @keyup="timKiem()"  v-model="noi_dung_tim" type="text" class="form-control search-control" placeholder="Tìm Kiếm?">
-					<span class="position-absolute top-50 search-show translate-middle-y"><i
-							class='bx bx-search'></i></span>
-					<span class="position-absolute top-50 search-close translate-middle-y"><i
-							class='bx bx-x'></i></span>
-				</div>
-			</div>
 
-			<div class="user-box dropdown">
-				<a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#"
-					role="button" data-bs-toggle="dropdown" aria-expanded="false">
-					<img :src="avatar ? avatar : 'https://cdn.iconscout.com/icon/free/png-256/free-avatar-icon-download-in-svg-png-gif-file-formats--user-boy-avatars-flat-icons-pack-people-456322.png'"
-						class="user-img" alt="user avatar">
-					<div class="user-info ps-3">
-						<p class="user-name mb-0">{{ ho_ten }}</p>
-						<p class="designattion mb-0">Khách hàng</p>
+				<!-- Menu phải -->
+				<div class="d-flex align-items-center gap-3">
+					<a href="#" class="text-black text-decoration-none">
+						<i class="fa-regular fa-bell me-1"></i>Thông Báo
+					</a>
+					<a href="#" class="text-black text-decoration-none">
+						<i class="fa-regular fa-circle-question me-1"></i>Hỗ Trợ
+					</a>
+					<a href="#" class="text-black text-decoration-none">
+						<i class="fa-solid fa-globe me-1"></i>Tiếng Việt
+					</a>
+					<!-- Dropdown user -->
+					<div class="dropdown">
+						<a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#"
+							role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							<img :src="avatar || 'https://cdn.iconscout.com/icon/free/png-256/free-avatar-icon-download-in-svg-png-gif-file-formats--user-boy-avatars-flat-icons-pack-people-456322.png'"
+								class="user-img rounded-circle" alt="user avatar" style="width: 32px; height: 32px;">
+							<div class="ps-2 d-none d-md-block">
+								<p class="mb-0 fw-bold">{{ ho_ten }}</p>
+								<small>Khách hàng</small>
+							</div>
+						</a>
+						<ul class="dropdown-menu dropdown-menu-end">
+							<li>
+								<router-link to="/khach-hang/profile" class="dropdown-item">
+									<i class="bx bx-user me-1"></i>Profile
+								</router-link>
+							</li>
+							<li>
+								<a @click="logout" class="dropdown-item" href="javascript:;"><i
+										class="bx bx-log-out-circle me-1"></i>Logout</a>
+							</li>
+							<li>
+								<a @click="logoutAll" class="dropdown-item" href="javascript:;"><i
+										class="bx bx-log-out-circle me-1"></i>Logout All</a>
+							</li>
+						</ul>
 					</div>
-				</a>
-				<ul class="dropdown-menu dropdown-menu-end">
-					<li>
-						<router-link to="/khach-hang/profile">
-							<a class="dropdown-item" href="/khach-hang/profile"><i
-									class="bx bx-user"></i><span>Profile</span></a>
-						</router-link>
-					</li>
-					<li>
-						<a v-on:click="logout()" class="dropdown-item" href="javascript:;"><i
-								class='bx bx-log-out-circle'></i><span>Logout</span></a>
-					</li>
-					<li>
-						<a v-on:click="logoutAll()" class="dropdown-item" href="javascript:;"><i
-								class='bx bx-log-out-circle'></i><span>Logout All</span></a>
-					</li>
-				</ul>
+				</div>
 			</div>
-		</nav>
+		</div>
 	</div>
 </template>
 <script>
@@ -59,18 +66,18 @@ export default {
 			ho_ten: localStorage.getItem('ho_ten_khach_hang'),
 			avatar: localStorage.getItem('avatar'),
 			noi_dung_tim: '',
-			
+
 		}
 	},
 	methods: {
 		timKiem() {
-            this.$router.push({
-                name: 'name_tim_kiem',
-                params: {
-                    thong_tin: this.noi_dung_tim,
-                }
-            });
-        },
+			this.$router.push({
+				name: 'name_tim_kiem',
+				params: {
+					thong_tin: this.noi_dung_tim,
+				}
+			});
+		},
 		logout() {
 			axios.get('http://127.0.0.1:8000/api/khach-hang/dang-xuat', {
 				headers: {
@@ -118,4 +125,23 @@ export default {
 	}
 }
 </script>
-<style></style>
+<style>
+.menu-link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  color: black;
+  text-decoration: none;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+
+/* Khi trỏ chuột vào */
+.menu-link:hover {
+  color: #f45b3e; /* Màu cam */
+  border-bottom: 2px solid #f45b3e;
+  font-weight: bold;
+}
+</style>

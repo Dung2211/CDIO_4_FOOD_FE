@@ -1,19 +1,19 @@
 <template>
     <div class="wrapper">
-            <TopClient></TopClient>
-            <!-- <MenuClient></MenuClient> -->
+            <TopGuest></TopGuest>
+            <MenuGuest></MenuGuest>
 		<div class="page-wrapper">
 			<div class="page-content">
                 <router-view> </router-view>
             </div>
 		</div>
-        <BotClient></BotClient>
+        <BotGuest></BotGuest>
 	</div>
 </template>
 <script>
-import TopClient from "../../components/Client/TopClient.vue";
-import MenuClient from "../../components/Client/MenuClient.vue";
-import BotClient from "../../components/Client/BotClient.vue";
+import TopGuest from "../../components/Guest/TopGuest.vue";
+import MenuGuest from "../../components/Guest/MenuGuest.vue";
+import BotGuest from "../../components/Guest/BotGuest.vue";
 import "../../../assets/js/bootstrap.bundle.min.js";
 import "../../../assets/js/jquery.min.js";
 import "../../../assets/plugins/simplebar/js/simplebar.min.js";
@@ -22,10 +22,10 @@ import "../../../assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js";
 import "../../../assets/js/index.js";
 import "../../../assets/js/app.js";
 // import "../../../assets/js/pace.min.js";
-export default {    
+export default {
     name        :   "app",
     components  :   {
-        TopClient, MenuClient, BotClient
+        TopGuest, MenuGuest, BotGuest
     }
 }
 </script>

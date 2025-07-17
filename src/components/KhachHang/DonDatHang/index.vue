@@ -151,6 +151,15 @@
                                         <td colspan="2"><span class="d-flex justify-content-between"><b>Phí Ship: </b>{{
                                             formatVND(phi_ship) }}</span></td>
                                     </tr>
+                                    <tr class="align-middle">
+    <th>Chọn hình thức thanh toán</th>
+    <td colspan="5">
+        <select v-model="hinh_thuc_thanh_toan" class="form-control">
+            <option value="cod">Thanh toán khi nhận hàng (COD)</option>
+            <option value="momo">Ví điện tử Momo</option>
+        </select>
+    </td>
+</tr>
                                     <tr>
                                         <th colspan="4">Tổng tiền cần thanh toán:</th>
                                         <td colspan="2" class="text-end align-middle text-danger"><b>{{

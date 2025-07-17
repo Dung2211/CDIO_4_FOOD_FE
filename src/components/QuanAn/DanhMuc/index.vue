@@ -21,13 +21,12 @@
                         <input v-model="addMon.hinh_anh" type="text" class="form-control mt-2">
                     </div>
                     <div class="mb-2">
-                        <label>Dạnh Mục Cha</label>
+                        <label>Danh Mục Cha</label>
                         <select v-model="addMon.id_danh_muc_cha" class="form-control mt-2">
                             <option value="">Không Có</option>
                             <template v-for="(item, index) in listDanhMucCha" :key="index">
                                 <option :value="item.id">{{ item.ten_danh_muc }}</option>
                             </template>
-
                         </select>
                     </div>
                     <div class="mb-2">

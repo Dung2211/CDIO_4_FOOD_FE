@@ -1,5 +1,5 @@
 <template>
-    <div class="row">
+    <div class="row mt-0">
         <div id="carouselExampleControls" class="carousel slide pointer-event" data-bs-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class=""></li>
@@ -85,117 +85,21 @@
             </a>
         </div>
     </div>
-    <div class="row mt-5">
-        <div class="col-lg-12 text-center mb-2">
-            <div class="d-inline-block">
-                <h2><b>ĐẶT ĐỒ ĂN DỄ DÀNG TIỆN LỢI</b></h2>
-                <div class="text-center">
-                    <hr class="bg-secondary mb-3" style="width: 100%; height: 3px; border: none; border-radius: 5px" />
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-12">
-            <div class="row row-cols-1 row-cols-md-3 row-cols-xl-5 product-grid">
-                <!-- Card 1: Đặt món ăn nhanh -->
-                <div class="col">
-                    <div class="card border-info border-start border-5 border-1 radius-10">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <div class="widgets-icons rounded-circle mx-auto bg-light-primary mb-3">
-                                    <img src="https://hattimayukle.com/wp-content/uploads/2020/05/post-thumb-dat-do-an.jpg"
-                                        alt="Fast Food" class="rounded-circle" style="width: 50px; height: 50px" />
-                                </div>
-                                <h5 class="my-1">Đặt Món Nhanh</h5>
-                                <p class="mb-0 text-secondary">
-                                    Nhận đồ ăn chỉ trong 30 phút
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 2: Giao hàng tận nơi -->
-                <div class="col">
-                    <div class="card border-primary border-start border-5 border-1 radius-10">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <div class="widgets-icons rounded-circle mx-auto bg-light-danger mb-3">
-                                    <img src="https://kamereo.vn/blog/wp-content/uploads/2019/05/freepik_featured_delivery.jpg"
-                                        alt="Delivery" class="rounded-circle" style="width: 50px; height: 50px" />
-                                </div>
-                                <h5 class="my-1">Giao Tận Nơi</h5>
-                                <p class="mb-0 text-secondary">Giao đến bất cứ đâu</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 3: Ẩm thực đa dạng -->
-                <div class="col">
-                    <div class="card border-warning border-start border-5 border-1 radius-10">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <div class="widgets-icons rounded-circle mx-auto bg-light-info mb-3">
-                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9H5dbXlZ5W7DFkFi3f4aedpIkbEOPmLTH6w&s"
-                                        alt="Diverse Cuisine" class="rounded-circle"
-                                        style="width: 50px; height: 50px" />
-                                </div>
-                                <h5 class="my-1">Ẩm Thực Đa Dạng</h5>
-                                <p class="mb-0 text-secondary">Từ món Việt đến quốc tế</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 4: Combo tiết kiệm -->
-                <div class="col">
-                    <div class="card border-danger border-start border-5 border-1 radius-10">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <div class="widgets-icons rounded-circle mx-auto bg-light-success mb-3">
-                                    <img src="https://www.gosell.vn/blog/wp-content/uploads/2023/03/combo-01.jpg"
-                                        alt="Combo" class="rounded-circle" style="width: 50px; height: 50px" />
-                                </div>
-                                <h5 class="my-1">Combo Tiết Kiệm</h5>
-                                <p class="mb-0 text-secondary">Ưu đãi lớn mỗi ngày</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 5: Đồ ăn lành mạnh -->
-                <div class="col">
-                    <div class="card border-success border-start border-5 border-1 radius-10">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <div class="widgets-icons rounded-circle mx-auto bg-light-warning mb-3">
-                                    <img src="https://img.lovepik.com/photo/50088/5320.jpg_wh860.jpg" alt="Healthy Food"
-                                        class="rounded-circle" style="width: 50px; height: 50px" />
-                                </div>
-                                <h5 class="my-1">Đồ Ăn Lành Mạnh</h5>
-                                <p class="mb-0 text-secondary">Dinh dưỡng cho cả gia đình</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="row mt-4">
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
                     <div class="row">
                         <div class="col-lg-8">
-                            <h5 class="mt-2 text-danger">
+                            <h5 class="mt-2" style="color: #FF7B00;">
                                 Danh Mục Các Món Ăn <i class="fa-solid fa-bowl-food ms-1"></i>
                             </h5>
                         </div>
                         <div class="col-lg-2">
                             <div class="dropdown">
-                                <button class="btn btn-white dropdown-toggle w-100" type="button" id="dropdownDanhMuc"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn dropdown-toggle w-100" type="button" id="dropdownDanhMuc"
+                                    data-bs-toggle="dropdown" aria-expanded="false"
+                                    style="background-color: #FF7B00; color: white;">
                                     Danh Mục Món Ăn
                                 </button>
                                 <ul class="dropdown-menu" style="max-height: 250px; overflow-y: auto;"
@@ -210,11 +114,13 @@
                         </div>
                         <div class="col-lg-2">
                             <div class="btn-group w-100" role="group">
-                                <button type="button" class="btn btn-white w-100">Chọn Mức Giá</button>
+                                <button type="button" class="btn w-100"
+                                    style="background-color: #FF7B00; color: white;">Chọn Mức Giá</button>
                                 <div class="btn-group" role="group">
                                     <button id="btnGroupDrop1" type="button"
-                                        class="btn btn-white dropdown-toggle dropdown-toggle-nocaret px-1"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        class="btn dropdown-toggle dropdown-toggle-nocaret px-1"
+                                        data-bs-toggle="dropdown" aria-expanded="false"
+                                        style="background-color: #FF7B00; color: white;">
                                         <i class="bx bx-slider ms-1"></i>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-start" aria-labelledby="btnGroupDrop1">
@@ -261,6 +167,8 @@
                                             <div class="d-flex align-items-center mt-auto">
                                                 <i class="fa-solid fa-tag text-danger me-2"></i>
                                                 <span class="text-primary">-30%</span>
+                                                <button class="btn ms-auto "
+                                                    style="background-color: #FF9933; color: white;">Mua Ngay</button>
                                             </div>
                                         </div>
                                     </router-link>
@@ -268,8 +176,9 @@
                             </div>
                         </template>
                         <div class="col-lg-12 text-center">
-                            <button type="button" class="btn btn-lg btn-outline-success" style="width: 30%;"><i
-                                    class="fa-regular fa-hand-point-up"></i>Xem Thêm</button>
+                            <button type="button" class="btn btn-lg" style="width: 30%;"><i
+                                    class="fa-regular fa-hand-point-up"></i>Xem
+                                Thêm</button>
                         </div>
                     </div>
                 </div>
@@ -277,15 +186,21 @@
         </div>
     </div>
     <div class="row mt-4">
-        <div class="col-lg-12 text-center">
-            <div class="d-inline-block">
-                <h4><b>QUÁN ĂN ĐƯỢC YÊU THÍCH NHIỀU NHẤT</b></h4>
-                <div class="text-center">
-                    <hr class="bg-primary my-2" style="width: 100%; height: 3px; border: none; border-radius: 5px" />
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h5 class="mt-2" style="color: #FF7B00;">
+                            QUÁN ĂN ĐƯỢC YÊU THÍCH <i class="fa-solid fa-bowl-food ms-1"></i>
+                        </h5>
+                    </div>
+                    <div class="col-lg-6">
+                        <h6 class="mt-3 text-end" style="color: #FF7B00;">Xem tất cả <i
+                                class="fa-solid fa-arrow-right"></i>
+                        </h6>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="card">
             <div class="card-body">
                 <div class="row product-grid">
                     <template v-for="(v, k) in quanAn" :key="k">
@@ -312,7 +227,7 @@
                                                     <div class="d-flex align-items-center mt-3">
                                                         <i class="fa-solid fa-tag text-danger me-2"></i> <span
                                                             class="text-primary"><b>Giảm hết {{ v.giam_gia
-                                                            }}</b></span>
+                                                                }}</b></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -323,7 +238,7 @@
                         </div>
                     </template>
                     <div class="col-lg-12 text-center">
-                        <button type="button" class="btn btn-lg btn-outline-success" style="width: 30%;"><i
+                        <button type="button" class="btn btn-lg btn-outline" style="width: 30%;"><i
                                 class="fa-regular fa-hand-point-up"></i>Xem Thêm</button>
                     </div>
                 </div>
@@ -333,15 +248,23 @@
     <div class="row mt-4">
         <div class="col-lg-12">
             <div class="card">
-                <div class="card-header">
-                    <h5 class="mt-3"><b class="">VOUCHER HẤP DẪN KHI ĐẶT MÓN</b></h5>
+                <div class="card-header" style="background-color: #8B0000;">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h5 class="mt-3"><b class="text-uppercase text-white"> VOUCHER HẤP DẪN KHI ĐẶT MÓN</b></h5>
+                        </div>
+                        <div class="col-lg-6">
+                            <h6 class="text-white mt-3 text-end">Xem tất cả <i class="fa-solid fa-arrow-right"
+                                    style="color: #ffffff;"></i></h6>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body" style="background-color:#8B0000; border: none; box-shadow: none;">
                     <div class="row product-grid">
                         <template v-for="(v, k) in list_voucher" :key="k">
                             <div class="col-lg-2 d-flex">
-                                <div class="card flex-fill">
-                                    <img :src="v.hinh_anh" class="card-img-top" >
+                                <div class="card flex-fill border-0 shadow-none">
+                                    <img :src="getImageUrl(v.hinh_anh)" class="card-img-top">
                                     <div class="card-body">
                                         <h6 class="card-title cursor-pointer">{{ v.ten_voucher }}</h6>
                                         <div class="clearfix">
@@ -351,10 +274,6 @@
                                 </div>
                             </div>
                         </template>
-                        <div class="col-lg-12 text-center">
-                            <button type="button" class="btn btn-lg btn-outline-success" style="width: 30%;"><i
-                                    class="fa-regular fa-hand-point-up"></i>Xem Thêm</button>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -378,6 +297,9 @@ export default {
         this.loadData();
     },
     methods: {
+        getImageUrl(path) {
+            return `http://localhost:8000/${path}`;
+        },
         loadData() {
             axios
                 .get('http://127.0.0.1:8000/api/khach-hang/trang-chu/data')
@@ -436,5 +358,10 @@ export default {
     max-height: 250px;
     width: 100%;
     overflow-y: auto;
+}
+
+.page-content {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
 }
 </style>

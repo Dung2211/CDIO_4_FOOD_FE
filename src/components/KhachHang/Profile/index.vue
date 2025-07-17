@@ -2,21 +2,16 @@
     <div class="row">
         <div class="col-12">
             <div class="card border-0 shadow-sm">
-                <div class="card-body p-4">
+                <div class="card-body p-4" style="background-color: #FFE5B4;">
                     <ul class="nav nav-tabs nav-fill mb-4">
                         <li class="nav-item">
-                            <a class="nav-link active" data-bs-toggle="tab" href="#profile">
-                                <i class="fa-solid fa-user me-2"></i>Thông tin cá nhân
+                            <a class="nav-link active" data-bs-toggle="tab" href="#profile" style="color: #000000;">
+                                <i class="fa-solid fa-user me-2" style="color: #FF9933;"></i>Thông tin cá nhân
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#address">
-                                <i class="fa-solid fa-location-dot me-2"></i>Địa chỉ nhận hàng
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#password">
-                                <i class="fa-solid fa-lock me-2"></i>Đổi mật khẩu
+                            <a class="nav-link" data-bs-toggle="tab" href="#password" style="color: #000000;">
+                                <i class="fa-solid fa-lock me-2" style="color: #FF9933;"></i>Đổi mật khẩu
                             </a>
                         </li>
                     </ul>
@@ -43,7 +38,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="col-lg-8">
                                     <div class="card border-0 shadow-sm h-100">
                                         <div class="card-body p-4">
@@ -78,56 +72,60 @@
                                                 </div>
                                                 <div class="text-end mt-4">
                                                     <button type="button" class="btn btn-light me-2">Huỷ</button>
-                                                    <button type="button" v-on:click="updateProfile()"
-                                                        class="btn btn-primary px-4">Lưu thay
+                                                    <button type="button" v-on:click="updateProfile()" class="btn px-4"
+                                                        style="background-color: #FF9933; color: white;">Lưu thay
                                                         đổi</button>
                                                 </div>
                                             </form>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="tab-pane fade" id="address">
-                            <div class="d-flex justify-content-between align-items-center mb-4">
-                                <h5 class="mb-0 ms-4">Địa chỉ nhận hàng</h5>
-                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addDiaChiModal">
-                                    <i class="fa-solid fa-plus me-2"></i>Thêm địa chỉ
-                                </button>
-                            </div>
-                            <template v-for="(value, index) in list_dia_chi" :key="index">
-                                <div class="card border border-primary">
-                                    <div class="card-body p-4">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div>
-                                                <h6 class="mb-1">{{ value.ten_nguoi_nhan }}</h6>
-                                                <p class="mb-1">{{ value.so_dien_thoai }}</p>
-                                                <p class="mb-0 text-muted">{{ value.dia_chi }}, {{
-                                                    value.ten_quan_huyen }}, {{ value.ten_tinh_thanh }}</p>
-                                            </div>
-                                            <div>
-                                                <button v-on:click="Object.assign(detail_dia_chi, value)"
-                                                    class="btn btn-outline-primary btn-2xl me-2" data-bs-toggle="modal"
-                                                    data-bs-target="#updateDiaChiModal">
-                                                    <i class="fa-solid fa-pen"></i>
-                                                </button>
-                                                <button v-on:click="Object.assign(detail_dia_chi, value)"
-                                                    class="btn btn-outline-danger btn-2xl" data-bs-toggle="modal"
-                                                    data-bs-target="#deleteDiaChiModal">
-                                                    <i class="fa-solid fa-trash"></i>
-                                                </button>
+                            <div class="row mt-5">
+                                <div class="card border-0">
+                                    <div class="d-flex justify-content-between align-items-center mb-4 mt-3">
+                                        <h5 class="mb-0 ms-4">Địa chỉ nhận hàng</h5>
+                                        <button class="btn " data-bs-toggle="modal"
+                                            data-bs-target="#addDiaChiModal" style="background-color: #FF9933; color: white;">
+                                            <i class="fa-solid fa-plus me-2"></i>Thêm địa chỉ
+                                        </button>
+                                    </div>
+                                    <template v-for="(value, index) in list_dia_chi" :key="index">
+                                        <div class="card border border-light mb-3">
+                                            <div class="card-body p-4">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div>
+                                                        <h6 class="mb-1">{{ value.ten_nguoi_nhan }}</h6>
+                                                        <p class="mb-1">{{ value.so_dien_thoai }}</p>
+                                                        <p class="mb-0 text-muted">{{ value.dia_chi }}, {{
+                                                            value.ten_quan_huyen }}, {{ value.ten_tinh_thanh }}</p>
+                                                    </div>
+                                                    <div>
+                                                        <button v-on:click="Object.assign(detail_dia_chi, value)"
+                                                            class="btn btn-outline-primary btn-2xl me-2"
+                                                            data-bs-toggle="modal" data-bs-target="#updateDiaChiModal">
+                                                            <i class="fa-solid fa-pen"></i>
+                                                        </button>
+                                                        <button v-on:click="Object.assign(detail_dia_chi, value)"
+                                                            class="btn btn-outline-danger btn-2xl"
+                                                            data-bs-toggle="modal" data-bs-target="#deleteDiaChiModal">
+                                                            <i class="fa-solid fa-trash"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </template>
                                 </div>
-                            </template>
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="password">
                             <div class="row justify-content-center">
                                 <div class="col-lg-8">
                                     <div class="card border-0 shadow-sm">
                                         <div class="card-body p-4">
-                                            <h5 class="card-title mb-4">Đổi mật khẩu</h5>
+                                            <h2 class="card-title mb-4">Đổi mật khẩu tài khoản</h2>
 
                                             <div class="mb-3">
                                                 <label class="form-label fw-semibold">Mật khẩu hiện tại</label>
@@ -147,12 +145,14 @@
                                                     v-model="doi_mat_khau.re_password"
                                                     placeholder="Nhập lại mật khẩu mới">
                                             </div>
-                                            <button v-on:click="doiMatKhau()" type="submit"
-                                                class="btn btn-primary px-4">Cập nhật mật
-                                                khẩu</button>
+                                            <div class="d-flex justify-content-end">
+                                                <button class="btn btn-light me-2">Hủy</button>
+                                                  <button v-on:click="doiMatKhau()" type="submit"
+                                                class="btn text-end" style="background-color: #FF9933; color: white;">Xác nhận</button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>               
                             </div>
                         </div>
                     </div>
@@ -269,7 +269,7 @@
                     <div class="alert alert-warning" role="alert">
                         Bạn có chắc chắn muốn xóa địa chỉ <b>{{ detail_dia_chi.dia_chi }}, {{
                             detail_dia_chi.ten_quan_huyen
-                            }}, {{ detail_dia_chi.ten_tinh_thanh }}</b> này không?
+                        }}, {{ detail_dia_chi.ten_tinh_thanh }}</b> này không?
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -502,5 +502,6 @@ export default {
     }
 }
 </script>
+<style>
 
-<style></style>
+</style>

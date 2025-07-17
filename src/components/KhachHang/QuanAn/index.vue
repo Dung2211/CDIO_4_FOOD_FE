@@ -60,7 +60,7 @@
                                         <div class="d-flex align-items-center mt-3">
                                             <i class="fa-solid fa-tag text-danger me-2"></i> <span
                                                 class="text-primary"><b>Giảm hết {{ v.giam_gia
-                                                }}</b></span>
+                                                    }}</b></span>
                                         </div>
                                     </div>
                                 </div>

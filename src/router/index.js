@@ -65,10 +65,15 @@ const routes = [
 		component: () => import("../components/Admin/DangNhap/index.vue"),
 		meta: { layout: "blank" },
 	},
-
-	//  Khách Hàng
+    // Khách vãng lai
 	{
 		path: "/",
+		component: () => import("../components/Guest/TrangKhach/index.vue"),
+		meta: { layout: "guest" },
+	},
+	//  Khách Hàng
+	{
+		path: "/Khach-hang/trang-chu",
 		component: () => import("../components/KhachHang/TrangChu/index.vue"),
 		meta: { layout: "client" },
 	},
@@ -86,6 +91,11 @@ const routes = [
 	{
 		path: "/khach-hang/dang-ky",
 		component: () => import("../components/KhachHang/DangKi/index.vue"),
+		meta: { layout: "blank" },
+	},
+	{
+		path: "/khach-hang/quen-mat-khau",
+		component: () => import("../components/KhachHang/Quenmatkhau/index.vue"),
 		meta: { layout: "blank" },
 	},
 	{

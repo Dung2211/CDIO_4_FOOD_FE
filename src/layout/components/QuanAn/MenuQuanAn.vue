@@ -39,6 +39,15 @@
 						</a>
 					</router-link>
 				</li>
+					<li class="nav-item">
+					<router-link to="/quan-an/don-hang">
+						<a class="nav-link" href="/quan-an/don-hang">
+							<div class="parent-icon"><i class="fa-solid fa-ticket"></i>
+							</div>
+							<div class="menu-title">Đơn Hàng</div>
+						</a>
+					</router-link>
+				</li>
 				<li class="nav-item dropdown">
 					<a href="javascript:;" class="nav-link dropdown-toggle dropdown-toggle-nocaret"
 						data-bs-toggle="dropdown">

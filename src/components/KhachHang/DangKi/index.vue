@@ -1,12 +1,11 @@
 <template>
     <div class="container mt-5">
-        <div class="row w-100">
+        <div class="row w-100" >
             <div class="col-lg-3"></div>
             <div class="col-lg-6">
                 <div class="card shadow p-4">
                     <h1 class="text-center mb-3">📝 Đăng Ký Tài Khoản</h1>
                     <p class="text-center text-muted">Tham gia ngay để thưởng thức những món ăn tuyệt vời!</p>
-
                     <form>
                         <div class="mb-3">
                             <label>👤 Họ và Tên:</label>
@@ -40,7 +39,7 @@
                         <div class="mb-3">
                             <label>🔄 Xác Nhận Mật Khẩu:</label>
                             <input v-model="dang_ki.re_password" type="password" class="form-control"
-                                placeholder="Xác nhận mật khẩu">
+                            placeholder="Xác nhận mật khẩu">
                         </div>
 
                         <div class="d-grid">
@@ -49,7 +48,6 @@
                             </button>
                         </div>
                     </form>
-
                     <div class="text-center mt-3">
                         <p>Đã có tài khoản?
                             <router-link to="/khach-hang/dang-nhap">
@@ -83,7 +81,7 @@ export default {
     methods: {
         dangKi() {
             axios
-                .post('http://127.0.0.1:8000/api/khach-hang/register', this.dang_ki)
+                .post('http://127.0.0.1:8000/api/khach-hang/dang-ky', this.dang_ki)
                 .then((res) => {
                     if (res.data.status) {
                         this.$toast.success(res.data.message);
@@ -99,7 +97,7 @@ export default {
                         this.$toast.error(res.data.message);
                     }
                 })
-                 .catch(res => {
+                .catch(res => {
                     const list = Object.values(res.response.data.errors);
                     list.forEach((v, i) => {
                         this.$toast.error(v[0]);

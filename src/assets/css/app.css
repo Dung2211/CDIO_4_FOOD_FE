@@ -191,18 +191,16 @@ a {
 
 
 }
-
-
 .page-wrapper {
 
 
 	height: 100%;
 
 
-	margin-top: 120px;
+	margin-top: 100px;
 
 
-	margin-bottom: 30px;
+	margin-bottom: 10px;
 
 
 	margin-left: 0px;
@@ -214,9 +212,9 @@ a {
 
 	.page-wrapper {
 
-		padding-left: 80px;
+		padding-left: 40px;
 
-		padding-right: 80px;
+		padding-right: 40px;
 
 	}
 
@@ -572,9 +570,7 @@ a {
 @media (min-width:992px) {
 	.product-grid .card:hover {
 		margin-top: -.25rem;
-		margin-bottom: .25rem;
-		-webkit-box-shadow: 0 .5rem 1rem 0 rgba(0, 0, 0, .3);
-		box-shadow: 0 .5rem 1rem 0 rgba(0, 0, 0, .3)
+		margin-bottom: .25rem;		
 	}
 }
 
@@ -3827,19 +3823,19 @@ a {
 
 
 .btn-inverse-primary {
-	color: #008cff;
+	
     background-color: rgba(0, 140, 255, 0.18);
     border-color: rgb(209, 234, 255);
 }
 
 .btn-inverse-primary:hover {
-	color: #008cff;
+	
     background-color: rgba(0, 140, 255, 0.18);
     border-color: rgba(0, 140, 255, 0.18);
 }
 
 .btn-inverse-primary:focus {
-	color: #008cff;
+	
     background-color: rgba(0, 140, 255, 0.18);
     border-color: rgba(0, 140, 255, 0.18);
 	box-shadow: 0 0 0 .25rem rgba(49, 132, 253, .3)
@@ -3915,7 +3911,7 @@ a {
 }
 
 .btn-inverse-info {
-	color: #0dceec;
+	
     background-color: rgba(13, 206, 236, 0.18);
     border-color: rgb(211, 246, 252);
 }
