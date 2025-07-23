@@ -8,7 +8,7 @@
                             <div class="tab-icon">
                                 <i class="fa-solid fa-bars me-2"></i>
                             </div>
-                            <div class="tab-title">Quản lý Danh Mục</div>
+                            <div class="tab-title">Quản lý Danh Mục Cha</div>
                         </div>
                     </a>
                 </li>
@@ -27,7 +27,7 @@
             <div class="tab-content py-3">
                 <div class="tab-pane fade active show" id="danhMuc" role="tabpanel">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h2 class="card-title mt-2 mb-4">Danh Sách Danh Mục</h2>
+                        <h2 class="card-title mt-2 mb-4">Danh Mục Món Ăn</h2>
                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#themMoiMoldel">
                             <i class="fas fa-plus"></i> Thêm Mới Danh Mục
                         </button>
@@ -64,16 +64,8 @@
                                                 <input type="text" class="form-control" id="hinh_anh"
                                                     placeholder="Nhập hình ảnh" v-model="create_danh_muc.hinh_anh" />
                                             </div>
-                                            <div class="mb-3">
-                                                <label>Danh Mục Cha</label>
-                                                <select v-model="create_danh_muc.id_danh_muc_cha"
-                                                    class="form-control mt-2" placeholder="Nhập ID Danh Muc Cha">
-                                                    <template v-for="(value, index) in list_danh_muc" :key="index">
-                                                        <option v-bind:value="value.id">{{ value.ten_danh_muc }}
-                                                        </option>
-                                                    </template>
-                                                </select>
-                                            </div>
+                                          <input type="hidden" v-model="create_danh_muc.id_danh_muc_cha" />
+
                                             <div class="mb-3">
                                                 <label for="tinh_trang" class="form-label">Trạng thái</label>
                                                 <select class="form-control" v-model="create_danh_muc.tinh_trang">
@@ -113,10 +105,9 @@
                             <thead class="table-light">
                                 <tr class="align-middle text-center table-secondary">
                                     <th>#</th>
-                                    <th>Tên Danh Mục</th>
+                                    <th>Tên Danh Mục Cha</th>
                                     <th>Slug Danh Mục</th>
-                                    <th>Hình Ảnh</th>
-                                    <th>ID Danh Mục Cha</th>
+                                    <th>Hình Ảnh</th>                                   
                                     <th>Trạng Thái</th>
                                     <th>Action</th>
                                 </tr>
@@ -129,10 +120,7 @@
                                         <td>{{ value.slug_danh_muc }}</td>
                                         <td class="text-center">
                                             <img v-bind:src="value.hinh_anh" alt="" style="width: 120px;">
-                                        </td>
-                                        <td class="text-center">
-                                            {{ value.ten_danh_muc_cha ? value.ten_danh_muc_cha : "-" }}
-                                        </td>
+                                        </td>                                     
                                         <td class="text-center" v-on:click="changeStatus(value)">
                                             <button v-if="value.tinh_trang == 0" class="btn btn-warning me-1"
                                                 style="color: white">Tạm
@@ -279,15 +267,8 @@
                                 <input type="text" class="form-control" id="update_hinh_anh"
                                     v-model="update_danh_muc.hinh_anh" />
                             </div>
-                            <div class="mb-3">
-                                <label for="update_id_danh_muc_cha" class="form-label">Danh Mục Cha</label>
-                                <select class="form-control" v-model="update_danh_muc.id_danh_muc_cha">
-                                    <template v-for="(value, index) in list_danh_muc" :key="index">
-                                        <option v-bind:value="value.id">{{ value.ten_danh_muc }}
-                                        </option>
-                                    </template>
-                                </select>
-                            </div>
+                          <input type="hidden" v-model="create_danh_muc.id_danh_muc_cha" />
+
                             <div class="mb-3">
                                 <label for="update_tinh_trang" class="form-label">Trạng thái</label>
                                 <select class="form-control" v-model="update_danh_muc.tinh_trang">
@@ -514,10 +495,12 @@ export default {
                     },
                 })
                 .then((res) => {
-                    this.list_danh_muc = res.data.data;
+                     // Chỉ lấy danh mục cha
+                   this.list_danh_muc = res.data.data.filter(item => item.id_danh_muc_cha == null);
                 })
         },
         themMoi() {
+            this.create_danh_muc.id_danh_muc_cha = null;
             axios
                 .post("http://127.0.0.1:8000/api/admin/danh-muc/create", this.create_danh_muc, {
                     headers: {
@@ -539,6 +522,7 @@ export default {
                 })
         },
         capNhat() {
+            this.update_danh_muc.id_danh_muc_cha = null;
             axios
                 .post("http://127.0.0.1:8000/api/admin/danh-muc/update", this.update_danh_muc, {
                     headers: {

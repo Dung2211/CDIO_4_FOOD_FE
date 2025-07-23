@@ -31,7 +31,7 @@
 						</a>
 					</router-link>
 				</li>
-				<!-- <li class="nav-item">
+				<li class="nav-item">
 					<router-link to="/shipper/vi-tien">
 						<a class="nav-link" href="/shipper/vi-tien">
 							<div class="parent-icon">
@@ -40,7 +40,7 @@
 							<div class="menu-title">Quản Lý Ví</div>
 						</a>
 					</router-link>
-				</li> -->
+				</li>
 				<li class="nav-item">
 					<router-link to="/shipper/thong-ke">
 						<a class="nav-link" href="/shipper/thong-ke">

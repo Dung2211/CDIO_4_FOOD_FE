@@ -3,10 +3,7 @@
         <div class="col-lg-12">
             <div class="card radius-10 border-top border-0 border-3 border-info">
                 <div class="card-header d-flex justify-content-between">
-                    <h4 class="mt-2"><b>DANH SÁCH NHÂN VIÊN</b></h4>
-                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
-                        Thêm nhân viên
-                    </button>
+                    <h4 class="mt-2"><b>DANH SÁCH NHÂN VIÊN</b></h4>                 
                 </div>
                 <div class="row mb-2 mt-2">
                     <div class="col-lg-12">

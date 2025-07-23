@@ -202,14 +202,25 @@
                                             <button v-on:click="changetrangthai(item)" v-else class="btn btn-success"
                                                 style="color: white;">Hiển Thị </button>
                                         </td>
-                                        <td class="align-middle text-center">
+                                        <!-- <td class="align-middle text-center">
                                             <button v-on:click="Object.assign(suavoucher, item)"
                                                 class="btn btn-primary me-1" style='width: 100px' data-bs-toggle="modal"
                                                 data-bs-target="#suaVoucher">Cập Nhật</button>
                                             <button v-on:click="Object.assign(xoavoucher, item)" class="btn btn-danger"
                                                 style='width: 100px' data-bs-toggle="modal"
                                                 data-bs-target="#delVoucher">Xóa</button>
+                                        </td> -->
+                                        <td class="align-middle text-center">
+                                            <button v-on:click="Object.assign(suavoucher, item)" class="btn btn-link p-0 me-2"
+                                                data-bs-toggle="modal" data-bs-target="#suaVoucher" title="Cập nhật">
+                                                <i class="fas fa-pen-to-square text-warning fs-5"></i>
+                                            </button>
+                                            <button v-on:click="Object.assign(xoavoucher, item)" class="btn btn-link p-0"
+                                                data-bs-toggle="modal" data-bs-target="#delVoucher" title="Xóa">
+                                                <i class="fas fa-trash-alt text-danger fs-5"></i>
+                                            </button>
                                         </td>
+
                                     </tr>
                                 </template>
                             </tbody>

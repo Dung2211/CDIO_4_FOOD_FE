@@ -44,7 +44,7 @@
                             <th>Tổng Tiền</th>
                             <th>Trạng thái</th>
                             <th>Chi Tiết Đơn Đặt</th>
-                            <th>Action</th>
+                          
                         </tr>
                     </thead>
                     <tbody>
@@ -76,16 +76,7 @@
                                         data-bs-toggle='modal' data-bs-target='#chiTietModal' style="color: white;">
                                         <i class="fas fa-eye"></i> Chi tiết
                                     </button>
-                                </td>
-                                <td class="align-middle text-center">
-                                    <button class="btn btn-success btn-sm me-2">
-                                        <i class="fas fa-check"></i> Xác nhận
-                                    </button>
-                                    <button v-on:click="Object.assign(don_huy, value)" class="btn btn-danger btn-sm"
-                                        data-bs-toggle='modal' data-bs-target='#huyModal'>
-                                        <i class="fas fa-times"></i> Hủy
-                                    </button>
-                                </td>
+                                </td>                            
                             </tr>
                         </template>
                     </tbody>

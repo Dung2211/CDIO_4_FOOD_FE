@@ -111,10 +111,10 @@
             </div>
         </div>
     </div>
-    <div class="card">
-        <div class="card-header">
-            <div class="d-flex justify-content-between align-items-center">
-                <h6 class="mt-2"><b>DANH SÁCH DANH MỤC</b></h6>
+     <div class="card">
+           <div class="card-header">
+             <div class="d-flex justify-content-between align-items-center">
+                <h6 class="mt-2"><b>DANH MỤC MÓN ĂN</b></h6>
                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#themmoi">Thêm Mới</button>
             </div>
         </div>
@@ -150,12 +150,22 @@
                                     <button v-else class="btn btn-danger w-100" v-on:click="changeMonAn(item)">Tạm
                                         dừng</button>
                                 </td>
-                                <td class="align-middle text-center text-nowrap">
+                                <!-- <td class="align-middle text-center text-nowrap">
                                     <button v-on:click="Object.assign(editMon, item)" class="btn btn-primary me-1"
                                         style="width: 100px;" data-bs-toggle="modal" data-bs-target="#capnhat">Cập
                                         Nhật</button>
                                     <button v-on:click="Object.assign(deleteMon, item)" data-bs-toggle="modal"
                                         data-bs-target="#xoa" class="btn btn-danger" style="width: 100px;">Xóa</button>
+                                </td> -->
+                                <td class="align-middle text-center text-nowrap">
+                                    <button v-on:click="Object.assign(editDanhMuc, item)" class="btn btn-link p-0 me-2"
+                                        data-bs-toggle="modal" data-bs-target="#capnhat" title="Cập nhật">
+                                        <i class="fas fa-pen-to-square text-warning fs-5"></i>
+                                    </button>
+                                    <button v-on:click="Object.assign(deleteDanhMuc, item)" class="btn btn-link p-0"
+                                        data-bs-toggle="modal" data-bs-target="#xoa" title="Xóa">
+                                        <i class="fas fa-trash-alt text-danger fs-5"></i>
+                                    </button>
                                 </td>
                             </tr>
                         </template>

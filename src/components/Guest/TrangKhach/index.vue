@@ -9,7 +9,7 @@
                                 Danh Mục Các Món Ăn <i class="fa-solid fa-bowl-food ms-1"></i>
                             </h5>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-5">
                             <div class="dropdown text-end">
                                 <button class="btn mt-2 dropdown-toggle w-80" type="button" id="dropdownDanhMuc"
                                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -25,16 +25,12 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-lg-1">
-                            <h6 class="mt-3 text-end" style="color: #8B0000;"><b>Xem tất cả</b><i
-                                    class="fa-solid fa-arrow-right"></i>
-                            </h6>
-                        </div>
+                       
                     </div>
                 </div>
                 <div class="card-body" style="background-color: #CCCCCC; border: none; box-shadow: none;">
                     <div class="row product-grid">
-                        <template v-for="(v, k) in monAnData" :key="k">
+                        <template v-for="(v, k) in monAnHienThi" :key="k">
                             <div class="col-lg-2 d-flex">
                                 <div class="card flex-fill border-0 shadow-none">
                                     <router-link :to="'/khach-hang/quan-an/' + v.id_quan_an">
@@ -55,13 +51,16 @@
                                                 <i class="fa-solid fa-tag text-danger me-2"></i>
                                                 <span class="text-primary">-30%</span>
                                                 <button class="btn ms-auto " style="background-color: #FF9933; color: white;">Mua Ngay</button>
-                                            </div>
-                                            
+                                            </div>                                          
                                         </div>
                                     </router-link>
                                 </div>
                             </div>
                         </template>
+                         <div class="col-lg-12 text-center">
+                        <button class="btn btn-lg" style="width: 30%;" v-on:click="xemThemMonAn">
+                        <i class="fa-solid fa-arrow-down"></i>Xem Thêm</button>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -112,11 +111,7 @@
                                 </router-link>
                             </div>
                         </div>
-                    </template>
-                    <div class="col-lg-12 text-center">
-                        <button class="btn btn-lg" style="width: 30%;">
-                            <i class="fa-solid fa-arrow-down"></i>Xem Thêm</button>
-                    </div>
+                    </template>                  
                 </div>
             </div>
         </div>
@@ -138,8 +133,8 @@
                 <div class="card-body" style="background-color:#8B0000; border: none; box-shadow: none;">
                     <div class="row product-grid">
                         <template v-for="(v, k) in list_voucher" :key="k">
-                            <div class="col-lg-2 d-flex mb-5">
-                                <div class="card flex-fill border-0 shadow-none">
+                            <div class="col-lg-3 d-flex mb-0">
+                                <div class="card flex-fill shadow-none">
                                     <img :src="getImageUrl(v.hinh_anh)" class="card-img-top">
                                     <div class="card-body">
                                         <h6 class="card-title cursor-pointer">{{ v.ten_voucher }}</h6>
@@ -158,7 +153,6 @@
 </template>
 <script>
 import axios from 'axios';
-
 export default {
     data() {
         return {
@@ -167,11 +161,17 @@ export default {
             monAnData: [],
             originalMonAnData: [],
             list_voucher: [],
+            soLuongHienThi: 12 // số món hiện tại đang hiển thị
         };
     },
     created() {
         this.loadData();
     },
+    computed: {
+    monAnHienThi() {
+        return this.monAnData.slice(0, this.soLuongHienThi);
+    }
+    },  
     methods: {
         getImageUrl(path) {
             return `http://localhost:8000/${path}`;
@@ -179,12 +179,12 @@ export default {
         loadData() {
             axios
                 .get('http://127.0.0.1:8000/api/khach-hang/trang-chu/data')
-                .then((res) => {
+                .then((res) => {                 
                     this.monAnData = res.data.mon_an;
                     this.originalMonAnData = res.data.mon_an;
                     this.quanAn = res.data.quan_an_yeu_thich;
                     this.list_voucher = res.data.voucher;
-                    this.phanLoai = res.data.phan_loai;
+                    this.phanLoai = res.data.phan_loai;                
                 })
                 .catch((res) => {
                     const list = Object.values(res.response.data.errors);
@@ -193,6 +193,9 @@ export default {
                     });
                 })
         },
+         xemThemMonAn() {
+        this.soLuongHienThi += 12;
+    }
     },
 
 };

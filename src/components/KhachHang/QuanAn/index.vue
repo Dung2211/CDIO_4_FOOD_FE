@@ -1,76 +1,56 @@
 <template>
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row align-items-center">
-                        <div class="col-lg-3 col-xl-2">
-                            <div class="position-relative"><input type="text" class="form-control ps-5"
-                                    placeholder="Tìm kiếm quán ăn..."> <span
-                                    class="position-absolute top-50 product-show translate-middle-y"><i
-                                        class="bx bx-search"></i></span></div>
-                        </div>
-                        <div class="col-lg-9 col-xl-10">
-                            <form class="float-lg-end">
-                                <div class="row row-cols-lg-2 row-cols-xl-auto g-2">
-                                    <div class="col">
-                                        <div class="btn-group" role="group"><button type="button"
-                                                class="btn btn-white">159 Kết quả</button>
-                                            <div class="btn-group" role="group"><button id="btnGroupDrop1" type="button"
-                                                    class="btn btn-white dropdown-toggle dropdown-toggle-nocaret px-1"
-                                                    data-bs-toggle="dropdown" aria-expanded="false"><i
-                                                        class="bx bx-slider"></i></button>
-                                                <ul class="dropdown-menu dropdown-menu-start"
-                                                    aria-labelledby="btnGroupDrop1">
-                                                    <li><a class="dropdown-item" href="#">Đúng nhất</a></li>
-                                                    <li><a class="dropdown-item" href="#">Gần tôi</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+ <div class="row product-grid">
+<!-- Thanh tab tượng trưng -->
+<div class="d-flex justify-content-around border-bottom mb-3 fw-bold">
+  <div class="tab-item text-center py-2 flex-fill tab-active">
+    <span class="text-muted me-1"></span>Gần tôi
+  </div>
+  <div class="tab-item text-center py-2 flex-fill">
+    <span class="text-muted me-1"></span>Bán chạy
+  </div>
+  <div class="tab-item text-center py-2 flex-fill">
+    <span class="text-muted me-1"></span>Đánh giá tốt
+  </div>
+</div>
+    <template v-for="(v, k) in list_quan_an" :key="k">
+      <div class="col-xl-4 col-lg-6 col-md-6 col-12 d-flex">
+        <div class="card flex-fill shadow-sm border-0 bg-white rounded">
+          <router-link :to="'/khach-hang/quan-an/' + v.id" class="text-decoration-none text-dark">
+            <div class="card-body">
+              <div class="d-flex">
+                <!-- Ảnh quán -->
+                <img :src="v.hinh_anh" class="rounded" style="width: 100px; height: 100px; object-fit: cover;" />
+
+                <!-- Nội dung quán -->
+                <div class="ms-3 flex-grow-1 d-flex flex-column justify-content-between">
+                  <div>
+                    <h6 class="fw-bold mb-1 text-truncate">📍 {{ v.ten_quan_an }}</h6>
+                    <p class="mb-1 small text-muted">{{ v.dia_chi }}</p>
+
+                    <!-- Khoảng cách + thời gian -->
+                    <div class="d-flex align-items-center text-muted small mb-2">
+                      <i class="fas fa-star text-warning me-1"></i>
+                      4.5
+                      <span class="mx-2">|</span>
+                      3,2KM
+                      <span class="mx-2">|</span>
+                      31 phút
                     </div>
+                    <!-- Mã giảm -->
+                    <div>
+                      <span class="badge border border-danger text-danger bg-light px-3 py-2">
+                        Mã giảm {{ v.giam_gia || '10%' }}
+                      </span>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
+          </router-link>
         </div>
-    </div>
-    <div class="row product-grid">
-        <template v-for="(v, k) in list_quan_an" :key="k">
-            <div class="col-xl-4 col-lg-6 col-md-6 col-12 d-flex">
-                <div class="card flex-fill">
-                    <router-link :to="'/khach-hang/quan-an/' + v.id">
-                        <div class="card-body text-dark">
-                            <div class="row g-0">
-                                <div class="col-md-5">
-                                    <img v-bind:src="v.hinh_anh" class="img-fluid rounded-start" alt="..."
-                                        style="width: 100%;height: 100%;">
-                                </div>
-                                <div class="col-md-7">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>
-                                                {{ v.ten_quan_an }}</b></h5>
-                                        <p>{{ v.dia_chi }}
-                                        </p>
-                                        <p><i class="fa-solid fa-tags me-1"></i> Tối thiểu {{
-                                            v.gia_min }} <i class="fa-solid fa-circle-dollar-to-slot ms-3 me-1"></i>
-                                            Giá
-                                            {{ v.gia_max }}</p>
-                                        <div class="d-flex align-items-center mt-3">
-                                            <i class="fa-solid fa-tag text-danger me-2"></i> <span
-                                                class="text-primary"><b>Giảm hết {{ v.giam_gia
-                                                    }}</b></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </router-link>
-                </div>
-            </div>
-        </template>
-    </div>
+      </div>
+    </template>
+  </div>
 </template>
 <script>
 import axios from 'axios';
@@ -108,4 +88,15 @@ export default {
     },
 }
 </script>
-<style></style>
+<style scoped>
+.tab-item {
+  cursor: default;
+  color: #000;
+  border-bottom: 2px solid transparent;
+  transition: 0.2s;
+}
+
+.tab-active {
+  color: #FF6600; /* Cam nổi bật */
+  border-bottom: 3px solid #FF6600;
+}</style>

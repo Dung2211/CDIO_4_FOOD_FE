@@ -1,81 +1,63 @@
 <template>
-    <div class="container">
-        <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-2">
-            <div class="col mx-auto">
-                <div class="my-4 text-center">
-                    <!-- <img src="https://dzfullstack.com/assets/images/logo-img.png" width="180" alt="" /> -->
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <div class="border p-4 rounded">
-                            <div class="text-center">
-                                <h3 class="">ĐĂNG KÝ TRỞ THÀNH SHIPPER CÙNG DZFULLSTACK</h3>
-                            </div>
-                            <div class="login-separater text-center mb-4">
-                                <hr />
-                            </div>
-                            <div class="form-body">
-                                <div class="row g-3">
-                                    <div class="col-sm-6">
-                                        <label class="form-label">Họ Và Tên</label>
-                                        <input v-model="them_shipper.ho_va_ten" type="text" class="form-control" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label">Email</label>
-                                        <input v-model="them_shipper.email" type="email" class="form-control" />
-                                    </div>
-                                    <div class="col-6">
-                                        <label class="form-label">Số Điện Thoại</label>
-                                        <input v-model="them_shipper.so_dien_thoai" type="text" class="form-control" />
-                                    </div>
-                                    <div class="col-6">
-                                        <label class="form-label">CCCD</label>
-                                        <input v-model="them_shipper.cccd" type="text" class="form-control" />
-                                    </div>
-                                    <div class="col-6">
-                                        <label class="form-label">Mật Khẩu</label>
-                                        <input v-model="them_shipper.password" type="password" class="form-control" />
-                                    </div>
-                                    <div class="col-6">
-                                        <label class="form-label">Nhập Lại Mật Khẩu</label>
-                                        <input v-model="them_shipper.re_password" type="password" class="form-control" />
-                                    </div>
-                                    <div class="col-12">
-                                        <label class="form-label">Quận Huyện</label>
-                                        <select class="form-select" v-model="them_shipper.id_quan_huyen">
-                                            <template v-for="(value, index) in list_quan_huyen" :key="index">
-                                                <option :value="value.id">{{ value.ten_quan_huyen }}</option>
-                                            </template>
-                                        </select>
-                                    </div>
-                                    <div class="col-12">
-                                        <label>Địa chỉ thường trú</label>
-                                        <textarea v-model="them_shipper.dia_chi"
-                                            class="form-control"></textarea>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="d-grid">
-                                            <button type="button" v-on:click="dangKyShipper()"
-                                                class="btn btn-primary w-100">
-                                                <i class="bx bx-user"></i>Đăng Ký
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <router-link to="/shipper/dang-nhap">
-                                            <button type="button" class="btn btn-secondary w-100">
-                                                <i class="fa-solid fa-arrow-left"></i>Quay Lại Đăng Nhập
-                                            </button>
-                                        </router-link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+     <div class="container py-5"
+       style="background: url('/images/bg-shipper-register.jpg') no-repeat center center / cover; min-height: 100vh;">
+    <div class="text-center mb-4">
+      <h3 style="color: #FF9900; font-weight: bold;">Đăng ký trở thành người giao hàng</h3>
     </div>
+
+    <div class="bg-white rounded shadow p-4 mx-auto" style="max-width: 900px;">
+      <form class="row g-3">
+        <!-- Họ và tên + Email -->
+        <div class="col-md-6">
+          <label>👤 Họ Và Tên:</label>
+          <input v-model="them_shipper.ho_va_ten" type="text" class="form-control" />
+        </div>
+        <div class="col-md-6">
+          <label>✉️ E-mail:</label>
+          <input v-model="them_shipper.email" type="email" class="form-control" />
+        </div>
+
+        <!-- SĐT + CCCD -->
+        <div class="col-md-6">
+          <label>📱 Số điện thoại:</label>
+          <input v-model="them_shipper.so_dien_thoai" type="text" class="form-control" />
+        </div>
+        <div class="col-md-6">
+          <label>🪪 CCCD:</label>
+          <input v-model="them_shipper.cccd" type="text" class="form-control" />
+        </div>
+
+        <!-- Mật khẩu + nhập lại -->
+        <div class="col-md-6">
+          <label>🔐 Mật khẩu:</label>
+          <input v-model="them_shipper.password" type="password" class="form-control" />
+        </div>
+        <div class="col-md-6">
+          <label>🔁 Nhập lại mật khẩu:</label>
+          <input v-model="them_shipper.re_password" type="password" class="form-control" />
+        </div>
+        <!-- Nút đăng ký -->
+        <div class="col-12">
+          <button type="button"
+                  v-on:click="dangKyShipper()"
+                  class="btn w-100"
+                  style="background-color: #FF9900; color: white; font-weight: bold;">
+            Đăng ký
+          </button>
+        </div>
+
+        <!-- Quay lại -->
+        <div class="col-12 text-center">
+          <p class="mt-3 mb-0">
+            Bạn đã có tài khoản?
+            <router-link to="/shipper/dang-nhap">
+              <span style="color: green; font-weight: bold;">Đăng nhập</span>
+            </router-link>
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
 </template>
 <script>
 import axios from 'axios';

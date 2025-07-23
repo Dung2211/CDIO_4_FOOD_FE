@@ -66,8 +66,7 @@
                                         <td class="text-end">{{formatVND(value.tong_tien_hang)}}</td>
                                         <td class="text-center">{{value.so_don_hang}}</td>
                                     </tr>
-                                </template>
-                                
+                                </template>                            
                             </tbody>
                         </table>
                     </div>

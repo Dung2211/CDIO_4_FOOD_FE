@@ -1,106 +1,53 @@
 <template>
+  <div class="topbar d-flex align-items-center px-3" style="background-color: black; height: 60px;">
+    <!-- Logo -->
+    <div class="d-flex align-items-center me-auto">
+      <h4 class="mb-0 fw-bold">
+        <span style="color: orange;">K</span><span class="text-white">-FOODS</span>
+      </h4>
+    </div>
 
-	<div class="topbar d-flex align-items-center">
-		<nav class="navbar navbar-expand">
-			<div class="topbar-logo-header">
-				<div class="">
-					
-					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8Qs5Fh70n2MpVMZYjJy5R3DuZusdWCzAckA&s"
-						class="logo-icon" alt="logo icon">
-				</div>
-				<div class="">
-					<h4 class="logo-text text-danger">FoodZone</h4>
-				</div>
-			</div>
-			<div class="mobile-toggle-menu"><i class='bx bx-menu'></i></div>
-			<div class="search-bar flex-grow-1">
-				<div class="position-relative search-bar-box">
-					<input type="text" class="form-control search-control" placeholder="Tìm Kiếm?">
-					<span class="position-absolute top-50 search-show translate-middle-y"><i
-							class='bx bx-search'></i></span>
-					<span class="position-absolute top-50 search-close translate-middle-y"><i
-							class='bx bx-x'></i></span>
-				</div>
-			</div>
-			<div class="top-menu ms-auto">
-				<ul class="navbar-nav align-items-center">
-					<li class="nav-item mobile-search-icon">
-						<a class="nav-link" href="#"> <i class='bx bx-search'></i>
-						</a>
-					</li>
-					<li class="nav-item dropdown dropdown-large">
-						<a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false"> <i class='bx bx-category'></i>
-						</a>
-						<div class="dropdown-menu dropdown-menu-end">
-							<div class="row row-cols-3 g-3 p-3">
-								<div class="col text-center">
-									<div class="app-box mx-auto bg-gradient-cosmic text-white"><i
-											class='bx bx-group'></i>
-									</div>
-									<div class="app-title">Teams</div>
-								</div>
-								<div class="col text-center">
-									<div class="app-box mx-auto bg-gradient-burning text-white"><i
-											class='bx bx-atom'></i>
-									</div>
-									<div class="app-title">Projects</div>
-								</div>
-								<div class="col text-center">
-									<div class="app-box mx-auto bg-gradient-lush text-white"><i
-											class='bx bx-shield'></i>
-									</div>
-									<div class="app-title">Tasks</div>
-								</div>
-								<div class="col text-center">
-									<div class="app-box mx-auto bg-gradient-kyoto text-dark"><i
-											class='bx bx-notification'></i>
-									</div>
-									<div class="app-title">Feeds</div>
-								</div>
-								<div class="col text-center">
-									<div class="app-box mx-auto bg-gradient-blues text-dark"><i class='bx bx-file'></i>
-									</div>
-									<div class="app-title">Files</div>
-								</div>
-								<div class="col text-center">
-									<div class="app-box mx-auto bg-gradient-moonlit text-white"><i
-											class='bx bx-filter-alt'></i>
-									</div>
-									<div class="app-title">Alerts</div>
-								</div>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</div>
-			<div class="user-box dropdown">
-				<a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#"
-					role="button" data-bs-toggle="dropdown" aria-expanded="false">
-					<img :src="hinh_anh" class="user-img" alt="user avatar">
-					<div class="user-info ps-3">
-						<p class="user-name mb-0">{{ ten_quan_an }}</p>
-						<p class="designattion mb-0">Quán ăn</p>
-					</div>
-				</a>
-				<ul class="dropdown-menu dropdown-menu-end">
-					<li>
-						<router-link to="/quan-an/profile">
-							<a class="dropdown-item" href="/quan-an/profile"><i
-									class="bx bx-user"></i><span>Profile</span></a>
-						</router-link>
-					</li>
-					<li><a v-on:click="logout()" class="dropdown-item" href="javascript:;"><i
-								class='bx bx-log-out-circle'></i><span>Logout</span></a>
-					</li>
-					<li><a v-on:click="logoutAll()" class="dropdown-item" href="javascript:;"><i
-								class='bx bx-log-out-circle'></i><span>Logout All</span></a>
-					</li>
-				</ul>
-			</div>
-		</nav>
-	</div>
+    <!-- Icon setting + logout -->
+    <div class="d-flex align-items-center gap-3 me-3 border-black">
+      <button class="btn btn-sm text-white" @click="goToSettings" title="Cài đặt">
+        <i class="fas fa-cog fa-lg"></i>
+      </button>
+      <button class="btn btn-sm text-white" @click="logout" title="Đăng xuất">
+        <i class="fas fa-sign-out-alt fa-lg"></i>
+      </button>
+    </div>
+
+    <!-- Avatar người dùng -->
+    <div class="user-box dropdown border-black">
+      <a class="d-flex align-items-center nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+        <img :src="hinh_anh" class="user-img rounded-circle" alt="avatar" style="width: 40px; height: 40px;" />
+        <div class="user-info ps-2 text-start">
+          <p class="user-name mb-0 fw-bold text-white">{{ ten_quan_an }}</p>
+          <p class="designattion mb-0 text-white">Quán ăn</p>
+        </div>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li>
+          <router-link class="dropdown-item" to="/quan-an/profile">
+            <i class="bx bx-user"></i><span>Profile</span>
+          </router-link>
+        </li>
+        <li>
+          <a @click.prevent="logout" class="dropdown-item" href="#">
+            <i class="bx bx-log-out-circle"></i><span>Logout</span>
+          </a>
+        </li>
+        <li>
+          <a @click.prevent="logoutAll" class="dropdown-item" href="#">
+            <i class="bx bx-log-out-circle"></i><span>Logout All</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </template>
+
+
 <script>
 import axios from 'axios';
 
@@ -156,6 +103,11 @@ export default {
 					});
 				});
 		},
+
+		//bỏ cấu hình ở dưới menu lên 
+		goToSettings() {
+			this.$router.push('/quan-an/cau-hinh');
+		}
 	}
 }
 </script>

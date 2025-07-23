@@ -1,46 +1,36 @@
 <template>
-    <div class="section-authentication-signin d-flex align-items-center justify-content-center my-5 my-lg-0">
-        <div class="container">
-            <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
-                <div class="col mx-auto">
-                    <div class="card radius-10">
-                        <div class="card-body p-4">
-                            <div class="text-center mb-4">
-                                <img src="https://dzfullstack.com/assets/images/logo-1.png" width="150" alt="" />
-                                <h4 class="mt-3 font-weight-bold">ĐĂNG NHẬP ADMIN</h4>
-                            </div>
-                            <div class="form-body">
-                                <div class="row g-3">
-                                    <div class="col-12">
-                                        <label class="form-label">Email</label>
-                                        <div class="input-group">
-                                            <span class="input-group-text bg-transparent">
-                                                <i class="fa-solid fa-envelope"></i>
-                                            </span>
-                                            <input v-model="user.email" @keyup.enter="Login()" type="email" class="form-control border-start-0" placeholder="Email">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <label class="form-label">Mật khẩu</label>
-                                        <div class="input-group">
-                                            <span class="input-group-text bg-transparent">
-                                                <i class="fa-solid fa-lock"></i>
-                                            </span>
-                                            <input v-model="user.password" @keyup.enter="Login()" type="password" class="form-control border-start-0" placeholder="Mật khẩu">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="d-grid">
-                                            <button v-on:click="Login()" class="btn btn-primary">
-                                                <i class="fa-solid fa-right-to-bracket me-2"></i>
-                                                Đăng Nhập
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <div style="min-height: 100vh; background: linear-gradient(to bottom, #062242, #0a0a0a); padding: 40px 20px;">
+        <div class="container d-flex flex-column justify-content-center align-items-center h-100">
+            <!-- Phần giới thiệu bên trái -->
+            <div class="text-white mb-4 text-start w-100" style="max-width: 600px;">
+                <h2 style="color: #4CC9F0; font-weight: bold;">Đăng nhập</h2>
+                <p style="font-size: 1.1rem;">dành cho quản trị viên hệ thống</p>
+                <hr style="border-top: 2px dashed #4CC9F0; width: 150px;" />
+            </div>
+
+            <!-- Form đăng nhập -->
+            <div class="bg-white rounded shadow p-4 w-100 position-relative" style="max-width: 600px;">
+                <!-- K-FOODS ở giữa đầu form, to và nổi bật -->
+                <div class="text-center mb-4">
+                    <span style="font-size: 28px; font-weight: bold; color: #FF6600;">K-FOODS</span>
+                </div>
+
+                <div class="mb-3">
+                    <input v-model="user.email" @keyup.enter="Login()" type="email" class="form-control text-center"
+                        placeholder="E-mail" style="background-color: #E6F4FF;" />
+                </div>
+                <div class="mb-3">
+                    <input v-model="user.password" @keyup.enter="Login()" type="password"
+                        class="form-control text-center" placeholder="Mật khẩu" style="background-color: #E6F4FF;" />
+                </div>
+                <div class="mb-3 d-flex align-items-center">
+
+                    <div class="g-recaptcha" data-sitekey="6LftzRorAAAAAFqAWCXc2BGMp7XM-RgWuryT0v7d"></div>
+                </div>
+                <div class="d-grid">
+                    <button v-on:click="Login()" class="btn" style="background-color: #133B5C; color: white;">
+                        Đăng nhập
+                    </button>
                 </div>
             </div>
         </div>
@@ -52,11 +42,19 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            user : {
+            user: {
                 email: '',
                 password: ''
             }
         }
+    },
+    mounted() {
+        const recaptchaScript = document.createElement('script')
+        recaptchaScript.setAttribute('src', 'https://www.google.com/recaptcha/api.js')
+        recaptchaScript.onerror = () => {
+            this.$toast.error("Không thể tải Recaptcha. Vui lòng thử lại sau.")
+        }
+        document.head.appendChild(recaptchaScript)
     },
     methods: {
         Login() {

@@ -18,6 +18,7 @@
                                     <th>Tiền Hàng</th>
                                     <th>DS Món Ăn</th>
                                     <th>Tình Trạng</th>
+                                    <th>Trạng thái</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -27,34 +28,56 @@
                                         <td class="text-center">{{ value.created_at }}</td>
                                         <td class="text-center">{{ value.ma_don_hang }}</td>
                                         <td>{{ value.ten_nguoi_nhan }}</td>
-                                            <td>{{ value.ho_va_ten_shipper }}</td>
+                                        <td>{{ value.ho_va_ten_shipper }}</td>
                                         <td class="text-end">{{ formatVND(value.tien_hang) }}</td>
                                         <td class="text-center">
-                                            <button v-on:click="loadChiTiet(value)" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary">Chi Tiết</button>
+                                            <button v-on:click="loadChiTiet(value)" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal" class="btn btn-primary">Chi Tiết</button>
                                         </td>
+                                        <!-- //cột tình trạng đơn hàng -->
                                         <td>
-                                            <button v-on:click="daXong(value)" v-if="value.tinh_trang == 1"
+                                            <span v-if="value.tinh_trang == 0" class="badge bg-secondary w-100">Chờ xác
+                                                nhận</span>
+                                            <button v-on:click="tinhTrang(value)" v-if="value.tinh_trang == 1"
                                                 class="btn btn-warning btn-sm w-100">Đang làm</button>
-                                            <button v-if="value.tinh_trang == 2" class="btn btn-success btn-sm w-100">Đã xong</button>
+                                            <span v-if="value.tinh_trang == 2" class="badge bg-success w-100">Đã
+                                                xong</span>
+                                            <span v-if="value.tinh_trang == 3" class="badge bg-primary w-100">Đã
+                                                giao</span>
+
+                                        </td>
+                                        <!-- //cột trạng thái đơn hàng -->
+                                        <td>
+                                            <button v-on:click="xacNhan(value)" v-if="value.trang_thai_quan == 0"
+                                                class="btn btn-warning btn-sm w-100">Xác nhận</button>
+                                            <button v-if="value.trang_thai_quan == 1"
+                                                class="btn btn-success btn-sm w-100">Đã xác nhận</button>
+                                            <!-- ✅ THÊM NÚT HỦY -->
+                                            <button v-on:click="huyDon(value)" v-if="value.trang_thai_quan == 0" 
+                                                class="btn btn-danger btn-sm mt-1 w-100">
+                                                Hủy đơn hàng
+                                            </button>
+                                            <span v-if="value.trang_thai_quan == -1" class="badge bg-danger w-100">Đã
+                                                hủy</span>
                                         </td>
                                     </tr>
                                 </template>
                             </tbody>
                         </table>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-lg">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h1 class="modal-title fs-5" id="exampleModalLabel">DANH SÁCH MẶT HÀNG</h1>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						<table class="table table-bordered table-hover">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">DANH SÁCH MẶT HÀNG</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th class="text-center">#</th>
@@ -74,13 +97,13 @@
                                 </template>
                             </tbody>
                         </table>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary" data-bs-dismiss="modal">Đóng</button>
-					</div>
-				</div>
-			</div>
-		</div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -105,7 +128,7 @@ export default {
                     },
                 })
                 .then((res) => {
-                    if(res.data.status) {
+                    if (res.data.status) {
                         this.list_chi_tiet = res.data.data;
                     } else {
                         this.$toast.error(res.data.message);
@@ -118,15 +141,15 @@ export default {
                     });
                 })
         },
-        daXong(payload) {
+        tinhTrang(payload) {
             axios
-                .post("http://127.0.0.1:8000/api/quan-an/don-hang/da-xong", payload, {
+                .post("http://127.0.0.1:8000/api/quan-an/don-hang/tinh-trang", payload, {
                     headers: {
                         Authorization: "Bearer " + localStorage.getItem("quan_an_login"),
                     },
                 })
                 .then((res) => {
-                    if(res.data.status) {
+                    if (res.data.status) {
                         this.$toast.success(res.data.message);
                         this.loadData();
                     } else {
@@ -140,6 +163,50 @@ export default {
                     });
                 })
         },
+        xacNhan(payload) {
+            axios
+                .post("http://127.0.0.1:8000/api/quan-an/don-hang/xac-nhan", payload, {
+                    headers: {
+                        Authorization: "Bearer " + localStorage.getItem("quan_an_login"),
+                    },
+                })
+                .then((res) => {
+                    if (res.data.status) {
+                        this.$toast.success(res.data.message);
+                        this.loadData();
+                    } else {
+                        this.$toast.error(res.data.message);
+                    }
+                })
+                .catch((res) => {
+                    const list = Object.values(res.response.data.errors);
+                    list.forEach((v, i) => {
+                        this.$toast.error(v[0]);
+                    });
+                })
+        },
+        huyDon(payload) {
+    axios
+        .post("http://127.0.0.1:8000/api/quan-an/don-hang/huy-don", payload, {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("quan_an_login"),
+            },
+        })
+        .then((res) => {
+            if (res.data.status) {
+                this.$toast.success(res.data.message);
+                this.loadData(); // reload danh sách sau khi hủy
+            } else {
+                this.$toast.error(res.data.message);
+            }
+        })
+        .catch((res) => {
+            const list = Object.values(res.response.data.errors);
+            list.forEach((v) => {
+                this.$toast.error(v[0]);
+            });
+        });
+},
         formatVND(number) {
             return new Intl.NumberFormat('vi-VI', { style: 'currency', currency: 'VND' }).format(number,)
         },

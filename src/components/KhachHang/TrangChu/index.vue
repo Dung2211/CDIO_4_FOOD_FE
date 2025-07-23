@@ -1,90 +1,30 @@
 <template>
-    <div class="row mt-0">
-        <div id="carouselExampleControls" class="carousel slide pointer-event" data-bs-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class=""></li>
-                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class=""></li>
-                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" class="active" aria-current="true">
-                </li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item rounded-4" data-bs-interval="2000" style="background-color: #1C2331;">
-                    <div class="row">
-                        <div class="col-6 d-flex align-items-center">
-                            <div class="container ms-5">
-                                <h2 class="text-white mb-4">Món ngon đến tay bạn chỉ trong vài phút!
-                                    <i class="fa-brands fa-square-web-awesome-stroke text-warning"></i>
-                                </h2>
-                                <span class="text-white">
-                                    FoodZone cam kết giao đồ ăn nóng hổi, tươi ngon, đúng giờ đến tận cửa nhà bạn.
-                                    Thỏa mãn cơn đói bất kỳ lúc nào, ở bất kỳ đâu!
-                                </span>
-                                <p class="mt-4"><button class="btn btn-outline-light rounded-4"> <b>TRẢI NGHIỆM
-                                            NGAY</b> </button></p>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <img src="https://png.pngtree.com/png-clipart/20241112/original/pngtree-food-delivery-by-scooters-free-download-png-image_16940462.png"
-                                class="d-block w-100 rounded-4" alt="..."
-                                style="width: 400px; height: 500px; object-fit: cover;">
-                        </div>
-                    </div>
+    <div class="rounded-4 mb-4" style="background-color: #111111;">
+        <div class="row">
+            <div class="col-6 d-flex align-items-center">
+                <div class="container ms-5">
+                    <h2 class="text-white mb-4">Món ngon đến tay bạn chỉ trong vài phút!
+                        <i class="fa-brands fa-square-web-awesome-stroke text-warning"></i>
+                    </h2>
+                    <span class="text-white">
+                        FoodZone cam kết giao đồ ăn nóng hổi, tươi ngon, đúng giờ đến tận cửa nhà bạn.
+                        Thỏa mãn cơn đói bất kỳ lúc nào, ở bất kỳ đâu!
+                    </span>
+                    <p class="mt-4"><button class="btn btn-outline-light rounded-4"><b>TRẢI NGHIỆM NGAY</b></button></p>
                 </div>
-                <div class="carousel-item active rounded-4" data-bs-interval="10000" style="background-color: #1C2331;">
-                    <div class="row">
-                        <div class="col-6 d-flex align-items-center">
-                            <div class="container ms-5">
-                                <h2 class="text-white mb-4">Ưu đãi hấp dẫn - Đặt ngay hôm nay!
-                                    <i class="fa-brands fa-square-web-awesome-stroke text-warning"></i>
-                                </h2>
-                                <span class="text-white">
-                                    Giảm đến 50% cho lần đặt hàng đầu tiên. Hàng ngàn món ăn ngon đang chờ bạn khám
-                                    phá! Nhanh tay đặt ngay để không bỏ lỡ!
-                                </span>
-                                <p class="mt-4"><button class="btn btn-outline-light rounded-4"> <b>ĐẶT HÀNG
-                                            NGAY</b> </button></p>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <img src="https://alltop.vn/backend/media/images/posts/695/Dominos_Pizza-196049.jpg"
-                                class="d-block w-100 rounded-4" alt="..."
-                                style="width: 450px; height: 500px; object-fit: cover;">
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item rounded-4" style="background-color: #1C2331;">
-                    <div class="row">
-                        <div class="col-6 d-flex align-items-center">
-                            <div class="container ms-5">
-                                <h2 class="text-white mb-4">Khám phá thế giới ẩm thực ngay tại nhà!
-                                </h2>
-                                <span class="text-white">
-                                    Hàng ngàn món ăn từ Việt Nam, Âu, Á, Fusion đang sẵn sàng phục vụ bạn. Chỉ cần vài
-                                    cú nhấp chuột, tất cả ẩm thực sẽ đến ngay trước cửa nhà!
-                                </span>
-                                <p class="mt-4"><button class="btn btn-outline-light rounded-4"> <b>THỬ NGAY</b>
-                                    </button></p>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <img src="https://vj-prod-website-cms.s3.ap-southeast-1.amazonaws.com/shutterstock371955106huge-1675245432977.jpg"
-                                class="d-block w-100 rounded-4" alt="..."
-                                style="width: 450px; height: 500px; object-fit: cover;">
-                        </div>
-                    </div>
-                </div>
-
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </a>
+            <div class="col-6">
+                <img src="https://png.pngtree.com/png-clipart/20241112/original/pngtree-food-delivery-by-scooters-free-download-png-image_16940462.png"
+                    class="d-block w-100 rounded-4" alt="..." style="height: 500px; object-fit: cover;">
+                <!-- ICON overlay góc trên phải -->
+                <button class="position-absolute p-3 bg-light text-dark rounded-circle shadow border-0"
+                    style="top: 15px; right: 90px; cursor: pointer;" @click="onCartIconClick">
+                    <i class="fa-solid fa-cart-shopping fa-2x"></i>
+                </button>
+            </div>
         </div>
     </div>
+    <!-- // Danh sách món ăn -->
     <div class="row mt-4">
         <div class="col-lg-12">
             <div class="card">
@@ -147,7 +87,7 @@
                 </div>
                 <div class="card-body">
                     <div class="row product-grid">
-                        <template v-for="(v, k) in monAnData" :key="k">
+                        <template v-for="(v, k) in monAnHienThi" :key="k">
                             <div class="col-lg-2 d-flex">
                                 <div class="card flex-fill">
                                     <router-link :to="'/khach-hang/quan-an/' + v.id_quan_an">
@@ -158,15 +98,13 @@
                                                 {{ v.ten_mon_an }}
                                             </h6>
                                             <div class="clearfix">
-                                                <p class="mb-0 float-start">{{ v.ten_quan_an }}</p>
+                                                <p class="mb-0 float-start text-success">{{ v.ten_quan_an }}</p>
                                             </div>
-                                            <p class="mt-2">
+                                            <p class="mt-2 text-danger">
                                                 <del>{{ v.gia_ban }}đ</del>
                                                 <strong class="ms-2">{{ v.gia_khuyen_mai }}đ</strong>
                                             </p>
                                             <div class="d-flex align-items-center mt-auto">
-                                                <i class="fa-solid fa-tag text-danger me-2"></i>
-                                                <span class="text-primary">-30%</span>
                                                 <button class="btn ms-auto "
                                                     style="background-color: #FF9933; color: white;">Mua Ngay</button>
                                             </div>
@@ -176,7 +114,7 @@
                             </div>
                         </template>
                         <div class="col-lg-12 text-center">
-                            <button type="button" class="btn btn-lg" style="width: 30%;"><i
+                            <button v-on:click="xemThemMonAn()" type="button" class="btn btn-lg" style="width: 30%;"><i
                                     class="fa-regular fa-hand-point-up"></i>Xem
                                 Thêm</button>
                         </div>
@@ -227,7 +165,7 @@
                                                     <div class="d-flex align-items-center mt-3">
                                                         <i class="fa-solid fa-tag text-danger me-2"></i> <span
                                                             class="text-primary"><b>Giảm hết {{ v.giam_gia
-                                                                }}</b></span>
+                                                            }}</b></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -236,11 +174,7 @@
                                 </router-link>
                             </div>
                         </div>
-                    </template>
-                    <div class="col-lg-12 text-center">
-                        <button type="button" class="btn btn-lg btn-outline" style="width: 30%;"><i
-                                class="fa-regular fa-hand-point-up"></i>Xem Thêm</button>
-                    </div>
+                    </template>                  
                 </div>
             </div>
         </div>
@@ -262,7 +196,7 @@
                 <div class="card-body" style="background-color:#8B0000; border: none; box-shadow: none;">
                     <div class="row product-grid">
                         <template v-for="(v, k) in list_voucher" :key="k">
-                            <div class="col-lg-2 d-flex">
+                            <div class="col-lg-3 d-flex">
                                 <div class="card flex-fill border-0 shadow-none">
                                     <img :src="getImageUrl(v.hinh_anh)" class="card-img-top">
                                     <div class="card-body">
@@ -279,6 +213,16 @@
             </div>
         </div>
     </div>
+    <!-- giao diện giỏ hàng tổng  -->
+    <div v-if="showCart" class="position-fixed top-0 end-0 bg-white shadow-lg p-4"
+        style="z-index: 1050; width: 400px; height: 100vh; overflow-y: auto;">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="mb-0">🛒 Giỏ Hàng Tổng</h5>
+            <button class="btn btn-sm btn-danger" @click="toggleCart">Đóng</button>
+        </div>
+        <p>Hiển thị nội dung giỏ hàng tổng ở đây...</p>
+        <!-- Ví dụ: danh sách món, tên quán, tổng tiền, nút đặt hàng,... -->
+    </div>
 </template>
 <script>
 import axios from 'axios';
@@ -291,15 +235,22 @@ export default {
             monAnData: [],
             originalMonAnData: [],
             list_voucher: [],
+            showCart: false,
+            soluonghienthi: 12
         };
     },
     created() {
         this.loadData();
     },
+    computed: {
+        monAnHienThi() {
+            return this.monAnData.slice(0, this.soluonghienthi);
+        }
+    },
     methods: {
         getImageUrl(path) {
             return `http://localhost:8000/${path}`;
-        },
+        },           
         loadData() {
             axios
                 .get('http://127.0.0.1:8000/api/khach-hang/trang-chu/data')
@@ -316,6 +267,9 @@ export default {
                         this.$toast.error(v[0]);
                     });
                 })
+        },
+        xemThemMonAn() {
+            this.soluonghienthi += 12;
         },
         filterByPrice(range) {
             switch (range) {

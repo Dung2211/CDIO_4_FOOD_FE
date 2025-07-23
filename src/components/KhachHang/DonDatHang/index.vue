@@ -86,7 +86,7 @@
                                         <p class="mb-0">
                                             <del class="text-muted">{{ v.gia_ban.toLocaleString() }}đ</del>
                                             <strong class="text-danger ms-2">{{ v.gia_khuyen_mai.toLocaleString()
-                                            }}đ</strong>
+                                                }}đ</strong>
                                         </p>
                                     </div>
                                     <button v-on:click="themGioHang(v.id)" class="btn btn-outline-primary">+</button>
@@ -144,7 +144,7 @@
                                                 <template v-for="(value, index) in list_dia_chi" :key="index">
                                                     <option :value="value.id">{{ value.dia_chi }} - {{
                                                         value.ten_nguoi_nhan
-                                                        }} - {{ value.so_dien_thoai }}</option>
+                                                    }} - {{ value.so_dien_thoai }}</option>
                                                 </template>
                                             </select>
                                         </th>
@@ -152,20 +152,20 @@
                                             formatVND(phi_ship) }}</span></td>
                                     </tr>
                                     <tr class="align-middle">
-    <th>Chọn hình thức thanh toán</th>
-    <td colspan="5">
-        <select v-model="hinh_thuc_thanh_toan" class="form-control">
-            <option value="cod">Thanh toán khi nhận hàng (COD)</option>
-            <option value="momo">Ví điện tử Momo</option>
-        </select>
-    </td>
-</tr>
+                                        <th>Chọn hình thức thanh toán</th>
+                                        <td colspan="5">
+                                            <select v-model="hinh_thuc_thanh_toan" class="form-control">
+                                                <option value="cod">Thanh toán khi nhận hàng (COD)</option>
+                                                <option value="momo">Ví điện tử Momo</option>
+                                            </select>
+                                        </td>
+                                    </tr>
                                     <tr>
                                         <th colspan="4">Tổng tiền cần thanh toán:</th>
                                         <td colspan="2" class="text-end align-middle text-danger"><b>{{
                                             formatVND(tong_tien
                                                 + phi_ship)
-                                                }}</b>
+                                        }}</b>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -180,7 +180,7 @@
         </div>
     </div>
 
-    
+
 </template>
 <script>
 import axios from 'axios';

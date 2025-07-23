@@ -3,10 +3,7 @@
         <div class="col-lg-12 col-md-12">
             <div class="card radius-10 border-top border-0 border-3 border-info">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h5 class="mt-2">Danh Sách Shipper</h5>
-                    <button data-bs-toggle="modal" data-bs-target="#themMoiModal" class="btn btn-primary">
-                        <i class="fa-solid fa-plus"></i> Thêm Mới Shipper
-                    </button>
+                    <h5 class="mt-2">Danh Sách Shipper</h5>                 
                 </div>
                 <div class="card-body">
                     <div class="row mb-2 mt-2">

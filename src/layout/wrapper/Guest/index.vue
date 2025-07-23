@@ -1,8 +1,8 @@
 <template>
     <div class="wrapper">
             <TopGuest></TopGuest>
-            <MenuGuest></MenuGuest>
-		<div class="page-wrapper">
+            <MenuGuest class="mt-5"></MenuGuest>
+		<div class="page-wrapper mt-2">
 			<div class="page-content">
                 <router-view> </router-view>
             </div>

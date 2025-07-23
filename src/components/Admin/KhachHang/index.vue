@@ -3,11 +3,7 @@
         <div class="col-lg-12">
             <div class="card radius-10 border-top border-0 border-3 border-info">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h4 class="mt-2">Danh Sách Khách Hàng</h4>
-                    <div>
-                        <button class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#themmoiKhachhangModal">Thêm Mới</button>
-                    </div>
+                    <h4 class="mt-2">Danh Sách Khách Hàng</h4>                 
                 </div>
                 <div class="card-body">
                     <div class="row mb-2 mt-2">

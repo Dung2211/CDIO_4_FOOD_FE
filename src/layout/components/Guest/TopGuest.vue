@@ -20,9 +20,8 @@
 						<router-link to="/quan-an/dang-ky" class="text-decoration-none text-black">Trở thành người
 							bán</router-link>
 						<span class="text-black">|</span>
-						<span class="text-black">Kết nối</span>
-						<a href="#" class="text-black"><i class="fab fa-facebook-f"></i></a>
-						<a href="#" class="text-black ms-2"><i class="fab fa-instagram"></i></a>
+					    <router-link to="/shipper/dang-nhap" class="text-decoration-none text-black">Shipper cùng chúng tôi
+						</router-link>	
 					</div>
 
 					<!-- Bên phải: Thông báo / Hỗ trợ / Ngôn ngữ / Đăng nhập -->

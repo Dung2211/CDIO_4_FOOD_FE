@@ -4,11 +4,7 @@
             <div class="card radius-10 border-top border-0 border-3 border-info">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h5 class="mt-2">DANH SÁCH QUÁN ĂN</h5>
-                    <div>
-                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#themmMoiModal">
-                            <i class="fa-solid fa-plus me-1"></i> Thêm mới
-                        </button>
-
+                    <div>                       
                     </div>
                 </div>
                 <div class="card-body">

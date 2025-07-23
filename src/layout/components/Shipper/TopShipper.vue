@@ -1,5 +1,47 @@
 <template>
-	<div class="topbar d-flex align-items-center">
+		<div class="topbar d-flex align-items-center px-3" style="background-color: black; height: 60px;">
+    <!-- Logo -->
+    <div class="d-flex align-items-center me-auto">
+      <h4 class="mb-0 fw-bold">
+        <span style="color: orange;">K</span><span class="text-white">-FOODS</span>
+      </h4>
+    </div>
+    <!-- Icon setting + logout -->
+    <div class="d-flex align-items-center gap-3 me-3 border-black">
+      <button class="btn btn-sm text-white" @click="logout" title="Đăng xuất">
+        <i class="fas fa-sign-out-alt fa-lg"></i>
+      </button>
+    </div>
+    <!-- Avatar người dùng -->
+    <div class="user-box dropdown border-black">
+      <a class="d-flex align-items-center nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+		<img src="https://cdn.iconscout.com/icon/free/png-256/free-avatar-icon-download-in-svg-png-gif-file-formats--user-boy-avatars-flat-icons-pack-people-456322.png"
+						class="user-img" alt="user avatar">
+        <div class="user-info ps-2 text-start">
+          <p class="user-name mb-0 fw-bold text-white">{{ ho_ten }}</p>
+          <p class="designattion mb-0 text-white">Shipper</p>
+        </div>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li>
+          <router-link class="dropdown-item" to="/shipper/profile">
+            <i class="bx bx-user"></i><span>Profile</span>
+          </router-link>
+        </li>
+        <li>
+          <a @click.prevent="logout" class="dropdown-item" href="#">
+            <i class="bx bx-log-out-circle"></i><span>Logout</span>
+          </a>
+        </li>
+        <li>
+          <a @click.prevent="logoutAll" class="dropdown-item" href="#">
+            <i class="bx bx-log-out-circle"></i><span>Logout All</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+	<!-- <div class="topbar d-flex align-items-center">
 		<nav class="navbar navbar-expand">
 			<div class="topbar-logo-header">
 				<div class="">
@@ -98,7 +140,7 @@
 				</ul>
 			</div>
 		</nav>
-	</div>
+	</div> -->
 </template>
 <script>
 import axios from 'axios';
