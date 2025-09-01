@@ -96,7 +96,7 @@
                         <template v-for="(value, index) in list_mon_an" :key="index">
                             <div class="col d-flex">
                                 <div class="card flex-fill">
-                                    <router-link :to="'/khach-hang/don-dat-hang/' + value.id_quan_an">
+                                    <router-link :to="'/khach-hang/quan-an/' + value.id_quan_an">
                                         <img :src="value.hinh_anh" class="card-img-top"
                                             style="height: 200px; width: 100%;" />
                                         <div class="card-body">
@@ -123,7 +123,6 @@
                     </div>
                     
                     <hr>
-
                     <h4><b>Quán Ăn</b></h4>
                     <div class="row product-grid">
                         <template v-for="(value, index) in list_quan_an" :key="index">

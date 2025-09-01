@@ -1,9 +1,10 @@
 <template>
+    
     <div class="card shadow-sm mb-4">
         <div class="row g-0">
             <div class="col-md-4">
-                <img src="https://down-bs-vn.img.susercontent.com/vn-11134513-7r98o-lsv21q8k90uxa6@resize_ss640x400!@crop_w640_h400_cT"
-                    style="width: 100%; height: 400px; object-fit: cover;" class="img-fluid rounded-start"
+                <img :src="tt_quan_an.hinh_anh" 
+                    style="width: 100%; height: 350px; object-fit: cover;" class="img-fluid rounded-start"
                     alt="Restaurant Image">
             </div>
             <div class="col-md-8">
@@ -38,12 +39,12 @@
                             <div class="row">
                                 <div class="col-lg-5">
                                     <h6 class="form-label">PHÍ DỊCH VỤ </h6>
-                                    <h6 class="text-danger">0.0% Phí dịch Vụ</h6>
+                                    <h6 class="text-danger">0.0%</h6>
                                 </div>
                                 |
                                 <div class="col-lg-5">
                                     <h6 class="form-label">DỊCH VỤ BỞI </h6>
-                                    <h6 class="text-danger">FOODZONE</h6>
+                                    <h6 class="text-danger">K-FOODS</h6>
                                 </div>
                             </div>
                         </div>

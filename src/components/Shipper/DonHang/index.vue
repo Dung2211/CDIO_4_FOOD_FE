@@ -9,17 +9,6 @@
 								<h2 class="h3 text-white mb-1">Quản lý đơn hàng</h2>
 							</div>
 						</div>
-						<div class="d-flex align-items-center gap-3 mt-md-0">
-							<div class="text-end">
-								<h3 class="mb-0 mt-1 text-white">Nguyễn Văn A</h3>
-							</div>
-							<div
-								class="rounded-circle bg-white bg-opacity-25 d-flex align-items-center justify-content-center">
-								<img style="width: 60px; height: 60px; object-fit: cover; border-radius: 50%;"
-									class="img-fluid" src="https://cdn-icons-png.flaticon.com/512/4140/4140037.png"
-									alt="">
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -181,12 +170,12 @@
 											<div>
 												<span class="d-block">Giá trị đơn hàng:</span>
 												<span class="fw-bold text-success">{{ formatVND(value.tong_tien)
-													}}</span>
+												}}</span>
 											</div>
 											<div>
 												<span class="d-block">Phí vận chuyển:</span>
 												<span class="fw-bold text-primary">{{ formatVND(value.phi_ship)
-													}}</span>
+												}}</span>
 											</div>
 											<div>
 												<span class="d-block">Thanh toán:</span>

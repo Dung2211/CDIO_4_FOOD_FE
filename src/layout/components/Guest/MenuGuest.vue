@@ -94,15 +94,8 @@ export default {
         }
     },
     methods: {
-        timKiem() {
-            this.$router.push({
-                name: 'name_tim_kiem',
-                params: {
-                    thong_tin: this.noi_dung_timm,
-                }
-            });
-        },
 
+        
     }
 }
 </script>

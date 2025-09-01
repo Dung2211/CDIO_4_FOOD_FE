@@ -25,7 +25,7 @@
                                 </ul>
                             </div>
                         </div>
-                       
+
                     </div>
                 </div>
                 <div class="card-body" style="background-color: #CCCCCC; border: none; box-shadow: none;">
@@ -50,17 +50,18 @@
                                             <div class="d-flex align-items-center mt-auto">
                                                 <i class="fa-solid fa-tag text-danger me-2"></i>
                                                 <span class="text-primary">-30%</span>
-                                                <button class="btn ms-auto " style="background-color: #FF9933; color: white;">Mua Ngay</button>
-                                            </div>                                          
+                                                <button class="btn ms-auto "
+                                                    style="background-color: #FF9933; color: white;">Mua Ngay</button>
+                                            </div>
                                         </div>
                                     </router-link>
                                 </div>
                             </div>
                         </template>
-                         <div class="col-lg-12 text-center">
-                        <button class="btn btn-lg" style="width: 30%;" v-on:click="xemThemMonAn">
-                        <i class="fa-solid fa-arrow-down"></i>Xem Thêm</button>
-                    </div>
+                        <div class="col-lg-12 text-center">
+                            <button class="btn btn-lg" style="width: 30%;" v-on:click="xemThemMonAn">
+                                <i class="fa-solid fa-arrow-down"></i>Xem Thêm</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -111,7 +112,7 @@
                                 </router-link>
                             </div>
                         </div>
-                    </template>                  
+                    </template>
                 </div>
             </div>
         </div>
@@ -125,14 +126,16 @@
                             <h5 class="mt-3"><b class="text-uppercase text-white"> VOUCHER HẤP DẪN KHI ĐẶT MÓN</b></h5>
                         </div>
                         <div class="col-lg-6">
-                            <h6 class="text-white mt-3 text-end">Xem tất cả <i class="fa-solid fa-arrow-right"
-                                    style="color: #ffffff;"></i></h6>
+                            <span v-on:click="xemThemVoucher" class="text-white cursor-pointer">
+                                <h6 class="text-white mt-3 text-end">Xem tất cả <i class="fa-solid fa-arrow-right"
+                                        style="color: #ffffff;"></i></h6>
+                            </span>
                         </div>
                     </div>
                 </div>
                 <div class="card-body" style="background-color:#8B0000; border: none; box-shadow: none;">
                     <div class="row product-grid">
-                        <template v-for="(v, k) in list_voucher" :key="k">
+                        <template v-for="(v, k) in voucherHienThi" :key="k">
                             <div class="col-lg-3 d-flex mb-0">
                                 <div class="card flex-fill shadow-none">
                                     <img :src="getImageUrl(v.hinh_anh)" class="card-img-top">
@@ -161,17 +164,21 @@ export default {
             monAnData: [],
             originalMonAnData: [],
             list_voucher: [],
-            soLuongHienThi: 12 // số món hiện tại đang hiển thị
+            soLuongHienThi: 12, // số món hiện tại đang hiển thị
+            soLuongVoucher: 4 // số voucher hiện tại đang hiển thị
         };
     },
     created() {
         this.loadData();
     },
     computed: {
-    monAnHienThi() {
-        return this.monAnData.slice(0, this.soLuongHienThi);
-    }
-    },  
+        monAnHienThi() {
+            return this.monAnData.slice(0, this.soLuongHienThi);
+        },
+        voucherHienThi() {
+            return this.list_voucher.slice(0, this.soLuongVoucher);
+        }
+    },
     methods: {
         getImageUrl(path) {
             return `http://localhost:8000/${path}`;
@@ -179,12 +186,12 @@ export default {
         loadData() {
             axios
                 .get('http://127.0.0.1:8000/api/khach-hang/trang-chu/data')
-                .then((res) => {                 
+                .then((res) => {
                     this.monAnData = res.data.mon_an;
                     this.originalMonAnData = res.data.mon_an;
                     this.quanAn = res.data.quan_an_yeu_thich;
                     this.list_voucher = res.data.voucher;
-                    this.phanLoai = res.data.phan_loai;                
+                    this.phanLoai = res.data.phan_loai;
                 })
                 .catch((res) => {
                     const list = Object.values(res.response.data.errors);
@@ -193,9 +200,21 @@ export default {
                     });
                 })
         },
-         xemThemMonAn() {
-        this.soLuongHienThi += 12;
-    }
+        chonDanhMuc(id_danh_muc) {
+            if (id_danh_muc === 0) {
+                // Nếu là "Tất cả" chẳng hạn
+                this.monAnData = this.originalMonAnData;
+            } else {
+                this.monAnData = this.originalMonAnData.filter(mon => mon.id_danh_muc === id_danh_muc);
+            }
+            this.soLuongHienThi = 12; // reset lại số lượng hiển thị
+        },
+        xemThemMonAn() {
+            this.soLuongHienThi += 12;
+        },
+        xemThemVoucher() {
+            this.soLuongVoucher += 4;
+        }
     },
 
 };

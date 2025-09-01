@@ -208,28 +208,6 @@ export default {
                     });
                 })
         },
-        huyDonHang() {
-            axios
-                .post("http://127.0.0.1:8000/api/admin/don-hang/huy-don-hang", this.don_huy, {
-                    headers: {
-                        Authorization: "Bearer " + localStorage.getItem("nhan_vien_login"),
-                    },
-                })
-                .then((res) => {
-                    if (res.data.status) {
-                        this.$toast.success(res.data.message);
-                        this.loadData();
-                    } else {
-                        this.$toast.error(res.data.message);
-                    }
-                })
-                .catch((res) => {
-                    const list = Object.values(res.response.data.errors);
-                    list.forEach((v, i) => {
-                        this.$toast.error(v[0]);
-                    });
-                })
-        }
     }
 };
 </script>

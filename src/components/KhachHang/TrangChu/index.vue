@@ -3,11 +3,17 @@
         <div class="row">
             <div class="col-6 d-flex align-items-center">
                 <div class="container ms-5">
-                    <h2 class="text-white mb-4">Món ngon đến tay bạn chỉ trong vài phút!
-                        <i class="fa-brands fa-square-web-awesome-stroke text-warning"></i>
+                    <div class="input-group mb-5" style="max-width: 500px;">
+                        <input type="text" class="form-control" v-model="noi_dung_timm"
+                            placeholder="Tìm món ăn, quán ăn..." @keyup.enter="timKiem" />
+                        <button class="btn btn-warning" type="button" @click="timKiem">
+                            <i class="fa-solid fa-magnifying-glass"></i> Tìm kiếm
+                        </button>
+                    </div>
+                    <h2 class="text-white mb-4">Món ngon đến tay bạn <i class="fa-brands fa-square-web-awesome-stroke text-warning"></i>
                     </h2>
                     <span class="text-white">
-                        FoodZone cam kết giao đồ ăn nóng hổi, tươi ngon, đúng giờ đến tận cửa nhà bạn.
+                        K-FOODS cam kết giao đồ ăn nóng hổi, tươi ngon, đúng giờ đến tận cửa nhà bạn.
                         Thỏa mãn cơn đói bất kỳ lúc nào, ở bất kỳ đâu!
                     </span>
                     <p class="mt-4"><button class="btn btn-outline-light rounded-4"><b>TRẢI NGHIỆM NGAY</b></button></p>
@@ -165,7 +171,7 @@
                                                     <div class="d-flex align-items-center mt-3">
                                                         <i class="fa-solid fa-tag text-danger me-2"></i> <span
                                                             class="text-primary"><b>Giảm hết {{ v.giam_gia
-                                                            }}</b></span>
+                                                                }}</b></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -174,7 +180,7 @@
                                 </router-link>
                             </div>
                         </div>
-                    </template>                  
+                    </template>
                 </div>
             </div>
         </div>
@@ -188,14 +194,16 @@
                             <h5 class="mt-3"><b class="text-uppercase text-white"> VOUCHER HẤP DẪN KHI ĐẶT MÓN</b></h5>
                         </div>
                         <div class="col-lg-6">
-                            <h6 class="text-white mt-3 text-end">Xem tất cả <i class="fa-solid fa-arrow-right"
+                            <span v-on:click="xemThemVoucher">
+                                <h6 class="text-white mt-3 text-end">Xem tất cả <i class="fa-solid fa-arrow-right"
                                     style="color: #ffffff;"></i></h6>
+                            </span>
                         </div>
                     </div>
                 </div>
                 <div class="card-body" style="background-color:#8B0000; border: none; box-shadow: none;">
                     <div class="row product-grid">
-                        <template v-for="(v, k) in list_voucher" :key="k">
+                        <template v-for="(v, k) in list_voucher_hien_thi" :key="k">
                             <div class="col-lg-3 d-flex">
                                 <div class="card flex-fill border-0 shadow-none">
                                     <img :src="getImageUrl(v.hinh_anh)" class="card-img-top">
@@ -230,13 +238,15 @@ import axios from 'axios';
 export default {
     data() {
         return {
+            noi_dung_timm: '',
             phanLoai: [],
             quanAn: [],
             monAnData: [],
             originalMonAnData: [],
             list_voucher: [],
             showCart: false,
-            soluonghienthi: 12
+            soluonghienthi: 12, // Số lượng món ăn hiển thị ban đầu
+            so_voucher: 4, // Số lượng voucher hiển thị ban đầu
         };
     },
     created() {
@@ -245,12 +255,37 @@ export default {
     computed: {
         monAnHienThi() {
             return this.monAnData.slice(0, this.soluonghienthi);
-        }
+        },
+         xemThemMonAn() {
+            this.soluonghienthi += 12;
+        },
+        list_voucher_hien_thi() {
+            return this.list_voucher.slice(0, this.so_voucher);
+        },
+         xemThemVoucher() {
+            this.so_voucher += 4;
+        },
     },
     methods: {
         getImageUrl(path) {
             return `http://localhost:8000/${path}`;
-        },           
+        },
+       timKiem() {
+        if (this.noi_dung_timm.trim() !== '') {
+            this.$router.push({
+                name: 'name_tim_kiem',
+                params: {
+                    thong_tin: this.noi_dung_timm.trim(),
+                },
+            });
+        }
+        },
+        onCartIconClick() {
+            this.showCart = !this.showCart;
+        },
+        toggleCart() {
+            this.showCart = !this.showCart;
+        },
         loadData() {
             axios
                 .get('http://127.0.0.1:8000/api/khach-hang/trang-chu/data')
@@ -268,9 +303,7 @@ export default {
                     });
                 })
         },
-        xemThemMonAn() {
-            this.soluonghienthi += 12;
-        },
+       
         filterByPrice(range) {
             switch (range) {
                 case "under50":

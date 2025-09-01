@@ -258,38 +258,7 @@ export default {
                 .then((res) => {
                     this.list_khach_hang = res.data.data;
                 });
-        },
-        themMoi() {
-            axios
-                .post('http://127.0.0.1:8000/api/admin/khach-hang/create', this.create_khach_hang, {
-                    headers: {
-                        Authorization: "Bearer " + localStorage.getItem("nhan_vien_login"),
-                    },
-                })
-                .then((res) => {
-                    if (res.data.status) {
-                        this.$toast.success(res.data.message);
-                        this.create_khach_hang = {
-                            ho_va_ten: '',
-                            email: '',
-                            so_dien_thoai: '',
-                            password: '',
-                            re_password: '',
-                            ngay_sinh: '',
-                            is_active: ''
-                        };
-                        this.loadData();
-                    } else {
-                        this.$toast.error(res.data.message);
-                    }
-                })
-                .catch(res => {
-                    const list = Object.values(res.response.data.errors);
-                    list.forEach((v, i) => {
-                        this.$toast.error(v[0]);
-                    });
-                });
-        },
+        },     
         capNhatKhachHang() {
             axios
                 .post('http://127.0.0.1:8000/api/admin/khach-hang/update', this.update_khach_hang, {

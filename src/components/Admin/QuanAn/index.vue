@@ -359,25 +359,6 @@ export default {
                     this.list_quan = res.data.data;
                 })
         },
-        themMoiQuanAn() {
-            axios
-                .post('http://127.0.0.1:8000/api/admin/quan-an/create', this.quan_an_create, {
-                    headers: {
-                        Authorization: "Bearer " + localStorage.getItem("nhan_vien_login"),
-                    },
-                })
-                .then(res => {
-                    this.quan_an_create = {};
-                    this.$toast.success(res.data.message);
-                    this.layDataQuanAn();
-                })
-                .catch(res => {
-                    const list = Object.values(res.response.data.errors);
-                    list.forEach((v, i) => {
-                        this.$toast.error(v[0]);
-                    });
-                });
-        },
         xoaQuanAn() {
             axios
                 .post('http://127.0.0.1:8000/api/admin/quan-an/delete', this.quan_an_delete, {

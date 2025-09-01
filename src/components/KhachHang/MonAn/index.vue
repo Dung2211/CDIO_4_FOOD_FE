@@ -1,18 +1,27 @@
 <template>
     <!-- Tiêu đề + nút sắp xếp -->
-    <div class="card border-0 shadow-sm mb-4">
-        <div class="card-body">
-            <div class="d-flex justify-content-between align-items-center">
-                <div class="d-flex align-items-center">
-                    <h2 class="card-title mb-0 fw-bold">Danh Sách Các Món Ăn</h2>
+  <div class="card border-0 shadow-sm mb-4">
+    <div class="card-body">
+        <div class="row">
+            <!-- Cột 1: Ô tìm kiếm -->
+            <div class="col-lg-6 mb-2 mb-lg-0">
+                <div class="input-group" style="max-width: 100%;">
+                    <input type="text" class="form-control" v-model="noi_dung_timm"
+                        placeholder="Tìm món ăn, quán ăn..." @keyup.enter="timKiem" />
+                    <button class="btn btn-warning" type="button" @click="timKiem">
+                        <i class="fa-solid fa-magnifying-glass"></i> Tìm kiếm
+                    </button>
                 </div>
+            </div>
+            <!-- Cột 2: Nút sắp xếp -->
+            <div class="col-lg-6 text-lg-end">
                 <div class="btn-group">
-                    <button v-on:click="sapXepTangDan()" class="btn btn-sm rounded px-3"
+                    <button class="btn btn-sm rounded px-3"
                         style="background-color: #FF9933; color: white;">
                         <i class="fas fa-sort-amount-down-alt me-1"></i>
                         Giảm dần
                     </button>
-                    <button v-on:click="sapXepGiamDan()" class="btn btn-sm rounded px-3 ms-2"
+                    <button class="btn btn-sm rounded px-3 ms-2"
                         style="background-color: #FF9933; color: white;">
                         <i class="fas fa-sort-amount-up-alt me-1"></i>
                         Tăng dần
@@ -21,6 +30,7 @@
             </div>
         </div>
     </div>
+</div>
     <!-- Danh sách món ăn dạng ngang, 3 cột -->
     <div class="row">
         <template v-for="(value, index) in monAnHienThi" :key="index">
@@ -99,20 +109,6 @@ export default {
         xemThemMonAn() {
             this.soluonghienthi += 12;
         },
-        sapXepTangDan() {
-            this.list_mon_an = this.list_mon_an.slice().sort((a, b) => {
-                const giaA = (a.gia_khuyen_mai && a.gia_khuyen_mai > 0) ? a.gia_khuyen_mai : a.gia_ban;
-                const giaB = (b.gia_khuyen_mai && b.gia_khuyen_mai > 0) ? b.gia_khuyen_mai : b.gia_ban;
-                return giaA - giaB;
-            });
-        },
-        sapXepGiamDan() {
-            this.list_mon_an = this.list_mon_an.slice().sort((a, b) => {
-                const giaA = (a.gia_khuyen_mai && a.gia_khuyen_mai > 0) ? a.gia_khuyen_mai : a.gia_ban;
-                const giaB = (b.gia_khuyen_mai && b.gia_khuyen_mai > 0) ? b.gia_khuyen_mai : b.gia_ban;
-                return giaB - giaA;
-            });
-        }
     }
 }
 </script>
