@@ -262,12 +262,15 @@
               </table>
 
               <button
-                v-if="trang_thai == 0 || list_gio_hang.length == 0"
+                v-if="
+                  trang_thai == 0 || list_gio_hang.length == 0 || is_loi_dia_chi
+                "
                 disabled
                 class="btn btn-danger w-100 mt-2"
               >
                 Đặt Món Ăn
               </button>
+
               <button
                 v-else
                 v-on:click="xacNhan()"
@@ -302,6 +305,7 @@ export default {
       phi_ship: 0,
       list_dia_chi: [],
       hinh_thuc_thanh_toan: "cod", // 🚀 ĐÃ KHAI BÁO BIẾN MOMO Ở ĐÂY
+      is_loi_dia_chi: false,
     };
   },
   mounted() {
@@ -475,6 +479,8 @@ export default {
     },
     tinhPhiShip() {
       this.trang_thai = 0;
+      this.is_loi_dia_chi = false; // Reset lại trạng thái lỗi mỗi lần tính phí
+
       axios
         .post(
           "http://127.0.0.1:8000/api/khach-hang/don-dat-hang/phi-ship",
@@ -488,17 +494,29 @@ export default {
         )
         .then((res) => {
           if (res.data.status) {
+            // Trường hợp 1: Địa chỉ hợp lệ, tính được phí ship
             this.phi_ship = res.data.phi_ship;
             this.trang_thai = 1;
+            this.is_loi_dia_chi = false; // Mở khóa nút đặt hàng
           } else {
-            this.$toast.error("Hệ thống bị lỗi, vui lòng thử lại sau!");
+            // 🚀 Trường hợp 2: Bị văng do quá 20km hoặc khác Đà Nẵng
+            this.$toast.error(res.data.message); // In câu báo lỗi từ Backend ra
+            this.phi_ship = 0; // Đưa phí ship về 0
+            this.trang_thai = 0;
+            this.is_loi_dia_chi = true; // Khóa nút đặt hàng lại!
           }
         })
         .catch((res) => {
-          const list = Object.values(res.response.data.errors);
-          list.forEach((v, i) => {
-            this.$toast.error(v[0]);
-          });
+          // Lỗi Validation hoặc lỗi Server
+          if (res.response && res.response.data && res.response.data.errors) {
+            const list = Object.values(res.response.data.errors);
+            list.forEach((v, i) => {
+              this.$toast.error(v[0]);
+            });
+          } else {
+            this.$toast.error("Lỗi hệ thống khi tính phí ship!");
+          }
+          this.is_loi_dia_chi = true; // Lỗi thì cũng khóa nút luôn cho an toàn
         });
     },
   },

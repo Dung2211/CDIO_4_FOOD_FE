@@ -195,6 +195,12 @@ const routes = [
     meta: { layout: "quan_an" },
     beforeEnter: checkQuanAn,
   },
+  {
+    path: "/quan-an/danh-gia-khach-hang",
+    component: () => import("../components/QuanAn/Danhgiakhachhang/index.vue"),
+    meta: { layout: "quan_an" },
+    beforeEnter: checkQuanAn,
+  },
   // Shipper
   {
     path: "/shipper/dang-ky",

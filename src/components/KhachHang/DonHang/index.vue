@@ -70,21 +70,23 @@
                       {{ value.dia_chi }} - {{ value.ten_nguoi_nhan }} -
                       {{ value.so_dien_thoai }}
                     </td>
-                    <td class="text-center">
+                    <td class="text-center text-nowrap">
                       <button
                         v-on:click="xemChiTiet(value)"
                         type="button"
-                        class="btn btn-primary btn-sm radius-30 px-3 me-2"
+                        class="btn btn-primary btn-sm radius-30 px-3 me-2 mb-1"
                         data-bs-toggle="modal"
                         data-bs-target="#orderDetailsModal"
                       >
                         <i class="bx bx-detail me-1"></i>Chi tiết
                       </button>
 
-                      <template v-if="value.is_thanh_toan == 1">
+                      <template
+                        v-if="value.is_thanh_toan == 1 || value.tinh_trang == 3"
+                      >
                         <button
                           type="button"
-                          class="btn btn-success btn-sm radius-30 px-3"
+                          class="btn btn-success btn-sm radius-30 px-3 me-2 mb-1"
                         >
                           <i class="fa-solid fa-check-circle me-1"></i>Đã Thanh
                           Toán
@@ -93,11 +95,22 @@
                       <template v-else>
                         <button
                           type="button"
-                          class="btn btn-secondary btn-sm radius-30 px-3"
+                          class="btn btn-secondary btn-sm radius-30 px-3 me-2 mb-1"
                         >
                           <i class="fa-solid fa-clock me-1"></i>Chưa Thanh Toán
                         </button>
                       </template>
+
+                      <button
+                        v-if="value.tinh_trang == 3 && value.is_danh_gia != 1"
+                        v-on:click="chonDonHangDanhGia(value)"
+                        type="button"
+                        class="btn btn-warning btn-sm text-dark radius-30 px-3 mb-1"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalDanhGia"
+                      >
+                        <i class="fa-solid fa-star me-1"></i>Đánh Giá
+                      </button>
                     </td>
                   </tr>
                 </template>
@@ -108,6 +121,7 @@
       </div>
     </div>
   </div>
+
   <div class="modal fade" id="orderDetailsModal" tabindex="-1">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -124,7 +138,6 @@
           ></button>
         </div>
         <div class="modal-body">
-          <!-- Chi Tiết Sản Phẩm -->
           <div class="table-responsive">
             <table class="table table-hover table-bordered mb-0">
               <thead class="">
@@ -166,6 +179,64 @@
       </div>
     </div>
   </div>
+
+  <div class="modal fade" id="modalDanhGia" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-warning">
+          <h5 class="modal-title text-dark">
+            <i class="fa-solid fa-star me-2"></i>Đánh Giá Đơn Hàng
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label fw-bold">Mức độ hài lòng (Số sao)</label>
+            <select v-model="payloadDanhGia.so_sao" class="form-select">
+              <option value="5">⭐⭐⭐⭐⭐ (Tuyệt vời)</option>
+              <option value="4">⭐⭐⭐⭐ (Rất tốt)</option>
+              <option value="3">⭐⭐⭐ (Bình thường)</option>
+              <option value="2">⭐⭐ (Kém)</option>
+              <option value="1">⭐ (Rất tệ)</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-bold"
+              >Chia sẻ trải nghiệm của bạn</label
+            >
+            <textarea
+              v-model="payloadDanhGia.noi_dung"
+              class="form-control"
+              rows="4"
+              placeholder="Đồ ăn ngon, shipper nhiệt tình..."
+            ></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Hủy
+          </button>
+          <button
+            v-on:click="guiDanhGia()"
+            type="button"
+            class="btn btn-warning text-dark"
+            data-bs-dismiss="modal"
+          >
+            Gửi Đánh Giá
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -177,6 +248,12 @@ export default {
       list_don_hang: [],
       chi_tiet: {},
       list_chi_tiet: [],
+      // 🚀 Bổ sung payload lưu dữ liệu đánh giá
+      payloadDanhGia: {
+        id_don_hang: "",
+        so_sao: 5,
+        noi_dung: "",
+      },
     };
   },
   mounted() {
@@ -238,6 +315,36 @@ export default {
           list.forEach((v, i) => {
             this.$toast.error(v[0]);
           });
+        });
+    },
+    // 🚀 Bổ sung 2 hàm xử lý Đánh Giá
+    chonDonHangDanhGia(value) {
+      this.payloadDanhGia.id_don_hang = value.id;
+      this.payloadDanhGia.so_sao = 5;
+      this.payloadDanhGia.noi_dung = "";
+    },
+    guiDanhGia() {
+      axios
+        .post(
+          "http://127.0.0.1:8000/api/khach-hang/danh-gia/create",
+          this.payloadDanhGia,
+          {
+            headers: {
+              Authorization:
+                "Bearer " + localStorage.getItem("khach_hang_login"),
+            },
+          },
+        )
+        .then((res) => {
+          if (res.data.status) {
+            this.$toast.success("Cảm ơn bạn đã đánh giá!");
+            this.loadData(); // Cập nhật lại list đơn hàng để ẩn nút Đánh giá đi
+          } else {
+            this.$toast.error(res.data.message);
+          }
+        })
+        .catch((err) => {
+          this.$toast.error("Lỗi hệ thống, chưa thể gửi đánh giá!");
         });
     },
   },

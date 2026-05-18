@@ -315,7 +315,7 @@
                 v-model="dia_chi.ten_nguoi_nhan"
                 type="text"
                 class="form-control mt-2 mb-3"
-                placeholder="Nhập địa chỉ"
+                placeholder="Nhập Họ tên"
               />
             </div>
             <div class="col-lg-12">
@@ -420,7 +420,7 @@
               v-model="detail_dia_chi.ten_nguoi_nhan"
               type="text"
               class="form-control mt-1"
-              placeholder="Nhập địa chỉ"
+              placeholder="Nhập Họ tên"
             />
           </div>
           <div class="mb-2">
