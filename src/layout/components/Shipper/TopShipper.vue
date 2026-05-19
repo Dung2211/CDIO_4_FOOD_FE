@@ -1,9 +1,13 @@
 <template>
-		<div class="topbar d-flex align-items-center px-3" style="background-color: black; height: 60px;">
+  <div
+    class="topbar d-flex align-items-center px-3"
+    style="background-color: black; height: 60px"
+  >
     <!-- Logo -->
     <div class="d-flex align-items-center me-auto">
       <h4 class="mb-0 fw-bold">
-        <span style="color: orange;">K</span><span class="text-white">-FOODS</span>
+        <span style="color: orange">K</span
+        ><span class="text-white">-FOODS</span>
       </h4>
     </div>
     <!-- Icon setting + logout -->
@@ -14,9 +18,16 @@
     </div>
     <!-- Avatar người dùng -->
     <div class="user-box dropdown border-black">
-      <a class="d-flex align-items-center nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-		<img src="https://cdn.iconscout.com/icon/free/png-256/free-avatar-icon-download-in-svg-png-gif-file-formats--user-boy-avatars-flat-icons-pack-people-456322.png"
-						class="user-img" alt="user avatar">
+      <a
+        class="d-flex align-items-center nav-link dropdown-toggle"
+        href="#"
+        data-bs-toggle="dropdown"
+      >
+        <img
+          src="https://cdn.iconscout.com/icon/free/png-256/free-avatar-icon-download-in-svg-png-gif-file-formats--user-boy-avatars-flat-icons-pack-people-456322.png"
+          class="user-img"
+          alt="user avatar"
+        />
         <div class="user-info ps-2 text-start">
           <p class="user-name mb-0 fw-bold text-white">{{ ho_ten }}</p>
           <p class="designattion mb-0 text-white">Shipper</p>
@@ -41,7 +52,7 @@
       </ul>
     </div>
   </div>
-	<!-- <div class="topbar d-flex align-items-center">
+  <!-- <div class="topbar d-flex align-items-center">
 		<nav class="navbar navbar-expand">
 			<div class="topbar-logo-header">
 				<div class="">
@@ -143,62 +154,62 @@
 	</div> -->
 </template>
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
-	data() {
-		return {
-			ho_ten: localStorage.getItem('ho_ten_shipper')
-		}
-	},
-	methods: {
-		logout() {
-			axios
-				.get('http://127.0.0.1:8000/api/shipper/dang-xuat', {
-					headers: {
-						Authorization: "Bearer " + localStorage.getItem("shipper_login"),
-					},
-				})
-				.then(res => {
-					if (res.data.status) {
-						this.$toast.success(res.data.message);
-						localStorage.removeItem('shipper_login');
-						this.$router.push('/shipper/dang-nhap');
-					} else {
-						this.$toast.error(res.data.message);
-					}
-				})
-				.catch(res => {
-					const list = Object.values(res.res.data.errors);
-					list.forEach((v, i) => {
-						this.$toast.error(v[0]);
-					});
-				});
-		},
-		logoutAll() {
-			axios
-				.get('http://127.0.0.1:8000/api/shipper/dang-xuat-tat-ca', {
-					headers: {
-						Authorization: "Bearer " + localStorage.getItem("shipper_login"),
-					},
-				})
-				.then(res => {
-					if (res.data.status) {
-						this.$toast.success(res.data.message);
-						localStorage.removeItem('shipper_login');
-						this.$router.push('/shipper/dang-nhap');
-					} else {
-						this.$toast.error(res.data.message);
-					}
-				})
-				.catch(res => {
-					const list = Object.values(res.res.data.errors);
-					list.forEach((v, i) => {
-						this.$toast.error(v[0]);
-					});
-				});
-		},
-	}
-}
+  data() {
+    return {
+      ho_ten: localStorage.getItem("ho_ten_shipper"),
+    };
+  },
+  methods: {
+    logout() {
+      axios
+        .get("http://127.0.0.1:8000/api/shipper/dang-xuat", {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("shipper_login"),
+          },
+        })
+        .then((res) => {
+          if (res.data.status) {
+            this.$toast.success(res.data.message);
+            localStorage.removeItem("shipper_login");
+            this.$router.push("/shipper/dang-nhap");
+          } else {
+            this.$toast.error(res.data.message);
+          }
+        })
+        .catch((res) => {
+          const list = Object.values(res.res.data.errors);
+          list.forEach((v, i) => {
+            this.$toast.error(v[0]);
+          });
+        });
+    },
+    logoutAll() {
+      axios
+        .get("http://127.0.0.1:8000/api/shipper/dang-xuat-tat-ca", {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("shipper_login"),
+          },
+        })
+        .then((res) => {
+          if (res.data.status) {
+            this.$toast.success(res.data.message);
+            localStorage.removeItem("shipper_login");
+            this.$router.push("/shipper/dang-nhap");
+          } else {
+            this.$toast.error(res.data.message);
+          }
+        })
+        .catch((res) => {
+          const list = Object.values(res.res.data.errors);
+          list.forEach((v, i) => {
+            this.$toast.error(v[0]);
+          });
+        });
+    },
+  },
+};
 </script>
 <style></style>
